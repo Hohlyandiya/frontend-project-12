@@ -4,25 +4,20 @@ import {
   Route,
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css'
-import MainPage from './Components/MainPage.jsx';
-import RegistrationForm from './Components/Pages/Login/PageLogin.jsx';
-import NotFound from './Components/Pages/NotFound/PageNotFound.jsx';
+import MainPage from './pages/MainPage.jsx';
+import RegistrationForm from './pages/PageLogin.jsx';
+import NotFound from './pages/PageNotFound.jsx';
 
 const App = () => {
 
   return (
-    /* { <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} >
-          <Route index element={<div>No page is selected.</div> } />
-          <Route path="login" element={<RegistrationForm />} />
-          <Route path="notFound" element={<NotFound />} />
-        </Route>
+        <Route path="*" element={<MainPage />} />
+        <Route path="login" element={<RegistrationForm />} />
+        <Route path="notFound" element={<NotFound />} />
       </Routes>
-    </BrowserRouter> } */
-    <>
-      <RegistrationForm />
-    </>
+    </BrowserRouter>
   );
 }
 
