@@ -1,13 +1,11 @@
 import { useEffect, useState, useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import loadingChannels from '../api/loadingChannels';
 import getMessages from '../api/getMessages';
 import Navbar from '../Components/UI/NavBar';
 import Channels from '../Components/Channels';
 import Chat from '../Components/Chat';
-import ModalContainer from '../Components/Modals/ModalContainer';
-import getDefaultChannel from '../lib/getDefaultChannel';
 import AuthContext from '../context/index'
 
 const MainPage = () => {
@@ -25,37 +23,26 @@ const MainPage = () => {
         token,
         username
       })
+      //localStorage.clear()
     } else {
       navigate('/login')
     }
   }, []);
 
-  //const listChannels = Object.values(useSelector((state) => state.channels.entities))
-  //const listMessages = Object.values(useSelector((state) => state.messages.entities))
+  const navigateSignup = () => {
+    navigate('/signup')
+  }
 
-  /* const defaultChannel = getDefaultChannel(listChannels)
-  const listNameChannels = listChannels.map((channel) => channel.name) */
+  const navigateLogin = () => {
+    navigate('/login')
+  }
+
+  const navigateNotFound = () => {
+    navigate('/notFound')
+  }
 
   const [currentChannel, setCurrentChannel] = useState(null)
-  /* const [show, setShow] = useState(false)
-  const [action, setAction] = useState(null)
-  const [selectedChannel, setSelectedChannel] = useState(null) */
 
-  /* useEffect(() => {
-    setCurrentChannel(defaultChannel)
-  }, [defaultChannel])
-
-  useEffect(() => {
-    if (!currentChannel) {
-      setCurrentChannel(defaultChannel)
-    }
-  }, [listChannels, currentChannel])
- */
-  /* useEffect(() => {
-    console.log(`listMessages обновлён в ${new Date().toLocaleTimeString()}: `, listMessages)
-  }, [listMessages]) */
-
-  //console.log(`Компонент MainPage отрисован в ${new Date().toLocaleTimeString()}`)
   return (
     <>
       <div className="d-flex flex-column h-100">
@@ -67,18 +54,13 @@ const MainPage = () => {
               setCurrentChannel={setCurrentChannel}
             />
             <Chat
-              //listMessages={listMessages}
               currentChannel={currentChannel}
             />
-            {/* <ModalContainer
-              show={show}
-              setShow={setShow}
-              action={action}
-              selectedChannel={selectedChannel}
-              listNameChannels={listNameChannels}
-            /> */}
           </div>
         </div>
+        <button onClick={navigateSignup}>Signup</button>
+        <button onClick={navigateLogin}>Login</button>
+        <button onClick={navigateNotFound}>NotFound</button>
       </div>
     </>
   )

@@ -2,8 +2,11 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ButtonChannel from './ButtonChannel';
 import cn from 'classnames'
+import { useTranslation } from 'react-i18next';
 
 const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction, setShow, setSelectedChannel}) => {
+
+  const { t } = useTranslation()
 
     const btnClass = cn('', {
       'secondary': currentChannel?.id === channel.id ? true : false,
@@ -34,8 +37,8 @@ const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction,
       </ButtonGroup>
 
       <Dropdown.Menu>
-        <Dropdown.Item variant="danger" href="#/action-1" onClick={removeChannel}>Удалить</Dropdown.Item>
-        <Dropdown.Item href="#/action-2" onClick={editChannel}>Переименовать</Dropdown.Item>
+        <Dropdown.Item variant="danger" href="#/action-1" onClick={removeChannel}>{t('dropDownToggle.delete')}</Dropdown.Item>
+        <Dropdown.Item href="#/action-2" onClick={editChannel}>{t('dropDownToggle.rename')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )

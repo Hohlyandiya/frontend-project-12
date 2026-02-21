@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import cn from 'classnames'
 import renameChannel from '../../api/RenameChannel'
 import AuthContext from '../../context/index'
+import { useTranslation } from 'react-i18next'
 
 const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
 
@@ -12,6 +13,7 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   const { user } = useContext(AuthContext)
   const [isNotValidChannel, setIsNotValidChannel] = useState(false)
   const [errors, setErrors] = useState('')
+  const { t } = useTranslation()
 
     useEffect(() => {
     fieldChangeName.current.focus()
@@ -65,14 +67,14 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
           <div className="d-flex justify-content-end">
             <Button variant="secondary" className="me-2" onClick={handleClose}>
-              Отменить
+              {t('modals.buttonClose')}
             </Button>
             <Button
               type="submit"
               variant="primary"
               onKeyDown={(newNameChannel) => checkValidNewChannel(newNameChannel)}
             >
-              Отправить
+              {t('modals.buttonSend')}
             </Button>
           </div>
         </Form>

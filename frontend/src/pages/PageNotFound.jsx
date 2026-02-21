@@ -1,18 +1,22 @@
-import img from '../images/NotFound404.svg'
+import { useTranslation } from 'react-i18next';
+import img from '../assets/NotFound404.svg'
+import NavBar from '../Components/UI/NavBar';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
+
+  const { t } = useTranslation()
+
   return (
     <>
       <div className="d-flex flex-column h-100">
-        <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
-          <div className="container">
-            <a className="navbar-brand" href="/">Hexlet Chat</a>
-          </div>
-        </nav>
+        <NavBar/>
         <div className="text-center">
           <img alt="Страница не найдена" className="img-fluid h-25" src={img} />
-          <h1 className="h4 text-muted">Страница не найдена</h1>
-          <p className="text-muted">Но вы можете перейти <a href="/">на главную страницу</a></p>
+          <h1 className="h4 text-muted">{t('pageNotFound.notFound')}</h1>
+          <p className="text-muted">
+            {t('pageNotFound.transition')} <Link to='/'>{t('pageNotFound.linkMainPage')}</Link>
+          </p>
         </div>
       </div>
     </>

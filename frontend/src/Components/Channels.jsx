@@ -6,6 +6,28 @@ import { addChannel, deleteChannel, editedChannel } from "../store/slices/channe
 import { io } from "socket.io-client"
 import getDefaultChannel from "../lib/getDefaultChannel"
 import ModalContainer from '../Components/Modals/ModalContainer';
+import { useTranslation } from "react-i18next"
+
+/* import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+const ruLocales = i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      ru: {
+        translation: {
+          'Channels': "Каналы"
+        }
+      }
+    },
+    lng: "ru",
+    fallbackLng: "ru",
+    interpolation: {
+      escapeValue: false
+    }
+  }); */
+
 
 const Channels = ({ currentChannel, setCurrentChannel}) => {
 
@@ -16,6 +38,7 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
   const [action, setAction] = useState(null)
   const [selectedChannel, setSelectedChannel] = useState(null)
   const dispatch = useDispatch()
+  const { t } = useTranslation()
 
   const defaultChannel = getDefaultChannel(listChannels)
   const listNameChannels = listChannels.map((channel) => channel.name)
@@ -70,7 +93,7 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
   return (
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
       <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
-        <b>Каналы</b>
+        <b>{t('mainPage.channels')}</b>
         <button type="button" className="p-0 text-primary btn btn-group-vertical" onClick={addNewChannel}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="currentColor" className="bi bi-plus-square">
             <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"></path>

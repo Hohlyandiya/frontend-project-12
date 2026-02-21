@@ -5,8 +5,11 @@ import * as yup from 'yup'
 import cn from 'classnames'
 import addNewChannel from '../../api/addNewChannel'
 import AuthContext from '../../context/index'
+import { useTranslation } from 'react-i18next'
 
 const BodyCreateChannel = ({setShow, listNameChannels}) => {
+
+  const { t } = useTranslation()
 
   const fieldChannelName = useRef()
   const { user } = useContext(AuthContext)
@@ -65,14 +68,14 @@ const BodyCreateChannel = ({setShow, listNameChannels}) => {
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
           <div className="d-flex justify-content-end">
             <Button variant="secondary" className="me-2" onClick={handleClose}>
-              Отменить
+              {t('modals.buttonClose')}
             </Button>
             <Button 
               type="submit"
               variant="primary"
               onKeyDown={(newChannel) => checkValidNewChannel(newChannel)}
             >
-              Отправить
+              {t('modals.buttonSend')}
             </Button>
           </div>
         </Form>

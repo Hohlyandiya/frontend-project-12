@@ -3,11 +3,13 @@ import Button from 'react-bootstrap/esm/Button'
 import deleteChannel from '../../api/deleteChannel'
 import AuthContext from '../../context/index'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useTranslation } from 'react-i18next'
 
 const BodyDeletechannel = ({setShow, selectedChannel}) => {
 
   //const token = localStorage.getItem('token')
   const { user } = useContext(AuthContext)
+  const { t } = useTranslation()
 
   const handleClose = () => {
     setShow(false)
@@ -20,17 +22,17 @@ const BodyDeletechannel = ({setShow, selectedChannel}) => {
 
   return (
     <>
-      <p className="lead">Уверены?</p>
+      <p className="lead">{t('modals.question')}</p>
       <div className="d-flex justify-content-end">
         <Button variant="secondary" className="me-2" onClick={handleClose}>
-          Отменить
+          {t('modals.buttonClose')}
         </Button>
         <Button
           variant="danger"
           onClick={removeChannel}
           onKeyDown={removeChannel}
         >
-          Удалить
+          {t('modals.buttonDelete')}
         </Button>
       </div>
     </>

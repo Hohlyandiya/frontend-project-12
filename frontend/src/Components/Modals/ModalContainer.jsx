@@ -3,13 +3,16 @@ import BodyCreateChannel from './BodyCreateChannel';
 import BodyDeletechannel from './BodyDeleteChannel';
 import BodyRenameChannel from './BodyRenameChannel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useTranslation } from 'react-i18next';
 
 const ModalContainer = ({show, setShow, action, selectedChannel, listNameChannels}) => {
 
+  const { t } = useTranslation()
+
   const modalTitle = {
-    'add': 'Добавить канал',
-    'remove': 'Удалить канал',
-    'edit': 'Переименовать канал'
+    'add': t('modals.addChannel'),
+    'remove': t('modals.removeChannel'),
+    'edit': t('modals.editChannel')
   }
 
   const modalBody = () => {

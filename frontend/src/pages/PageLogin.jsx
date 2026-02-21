@@ -1,18 +1,16 @@
-import img from '../images/avatar.jpg'
+import img from '../assets/avatar.jpg'
 import FormAuthorization from '../Components/FormAuthorization';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import NavBar from '../Components/UI/NavBar';
+import { useTranslation } from 'react-i18next';
 
 const RegistrationForm = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate();
   return (
     <>
       <div className="d-flex flex-column h-100">
-        <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
-          <div className="container">
-            <a className="navbar-brand" href="/">Hexlet Chat</a>
-            <button type="button" className="btn btn-primary">Выйти</button>
-          </div>
-        </nav>
+        <NavBar/>
         <div className="container-fluid h-100">
           <div className="row justify-content-center align-content-center h-100">
             <div className="col-12 col-md-8 col-xxl-6">
@@ -25,8 +23,8 @@ const RegistrationForm = () => {
                 </div>
                 <div className="card-footer p-4">
                   <div className="text-center">
-                    <span>Нет аккаунта?</span> 
-                    <a href="/signup">Регистрация</a>
+                    <span>{t('pageLogin.noAccount')} </span> 
+                    <Link to='/signup'>{t('pageLogin.linkSingup')}</Link>
                   </div>
                 </div>
               </div>
