@@ -8,27 +8,6 @@ import getDefaultChannel from "../lib/getDefaultChannel"
 import ModalContainer from '../Components/Modals/ModalContainer';
 import { useTranslation } from "react-i18next"
 
-/* import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-
-const ruLocales = i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      ru: {
-        translation: {
-          'Channels': "Каналы"
-        }
-      }
-    },
-    lng: "ru",
-    fallbackLng: "ru",
-    interpolation: {
-      escapeValue: false
-    }
-  }); */
-
-
 const Channels = ({ currentChannel, setCurrentChannel}) => {
 
   const listChannels = Object.values(useSelector((state) => selectors.selectEntities(state)))
@@ -75,7 +54,7 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
     socket.on('renameChannel', (payload) => {
       const { id, name } = payload
       const changes = { name }
-      const changeData = {id, changes}
+      const changeData = { id, changes }
       dispatch(editedChannel(changeData))
     });
   

@@ -9,7 +9,6 @@ import AuthContext from '../context/index'
 import { useTranslation } from "react-i18next"
 
 const Chat = ({ currentChannel }) => {
-  
   const listMessages = Object.values(useSelector((state) => selectors.selectEntities(state)))
 
   const { user } = useContext(AuthContext)

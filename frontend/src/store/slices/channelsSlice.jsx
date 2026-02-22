@@ -4,14 +4,6 @@ const channelsAdapter = createEntityAdapter()
 
 const initialState = channelsAdapter.getInitialState()
 
-
-/* const initialState = {
-  channels: {
-    entities: {},
-    ids: []
-  }
-} */
-
 const channelsSlice = createSlice({
   name: 'channels',
   initialState,
@@ -26,15 +18,14 @@ const channelsSlice = createSlice({
       const { id } = payload
       channelsAdapter.removeOne(state, id)
     },
-    /* editedChannel(state, { payload }) {
-      const { id } = payload
-      const { [id]: value, ...channels } = state.entities
-      const updateEntities = {...channels, payload}
-      channelsAdapter.setAll(state, updateEntities)
-      console.log(payload)
+    editedChannel(state, { payload }) {
+      /* const { id } = payload
+      const restEntities = Object.values(state.entities).filter(channel => channel.id !== id)
+      const updateEntities = {...restEntities, payload}
+      channelsAdapter.setAll(state, updateEntities) */
       channelsAdapter.updateOne(state, payload)
-    } */
-    editedChannel: channelsAdapter.updateOne
+    }
+    //editedChannel: channelsAdapter.updateOne
   }
 })
 

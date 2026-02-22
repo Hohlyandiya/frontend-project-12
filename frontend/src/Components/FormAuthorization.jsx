@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import handlerLogin from '../api/handlerLogin';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 const FormAuthorization = ({navigate}) => {
   const { t } = useTranslation()
@@ -12,7 +13,11 @@ const FormAuthorization = ({navigate}) => {
     <Formik       
       initialValues={{ username: "", password: "" }}
       onSubmit={ async () => {
-        await handlerLogin(username.value, password.value, setStateField, navigate)
+        if (navigator.onLine) {
+          await handlerLogin(username.value, password.value, setStateField, navigate)
+        } else {
+          toast.error(t('toastContainer.errNetwork'))
+        }
       }}
     >
       {() => (

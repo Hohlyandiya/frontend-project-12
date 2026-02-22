@@ -6,6 +6,7 @@ import cn from 'classnames'
 import addNewChannel from '../../api/addNewChannel'
 import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify';
 
 const BodyCreateChannel = ({setShow, listNameChannels}) => {
 
@@ -23,9 +24,9 @@ const BodyCreateChannel = ({setShow, listNameChannels}) => {
   const schema = yup.object().shape({
     name: yup.string()
       .trim()
-      .min(3, 'От 3 до 20 символов')
-      .max(20, 'От 3 до 20 символов')
-      .notOneOf(listNameChannels, 'Должно быть уникальным')
+      .min(3, t('modals.minAndMaxChars'))
+      .max(20, t('modals.minAndMaxChars'))
+      .notOneOf(listNameChannels, t('modals.uniqueNameChannel'))
       .required(),
   });
 
@@ -40,6 +41,7 @@ const BodyCreateChannel = ({setShow, listNameChannels}) => {
       setIsNotValidChannel(isValid)
       await addNewChannel(newChannel, user.token)
       handleClose()
+      toast.success(t('toastContainer.channelCreate'))
     } else {
       setIsNotValidChannel(!isValid)
     }

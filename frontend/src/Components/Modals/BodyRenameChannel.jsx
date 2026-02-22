@@ -6,6 +6,7 @@ import cn from 'classnames'
 import renameChannel from '../../api/RenameChannel'
 import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify';
 
 const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
 
@@ -22,9 +23,9 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   const schema = yup.object().shape({
     name: yup.string()
       .trim()
-      .min(3, 'От 3 до 20 символов')
-      .max(20, 'От 3 до 20 символов')
-      .notOneOf(listNameChannels, 'Должно быть уникальным')
+      .min(3, t('modals.minAndMaxChars'))
+      .max(20, t('modals.minAndMaxChars'))
+      .notOneOf(listNameChannels, t('modals.uniqueNameChannel'))
       .required(),
   });
 
@@ -49,6 +50,7 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
       initialValues={{ name: "" }}
       onSubmit={(newNameChannel) => {
         checkValidNewChannel(newNameChannel)
+        toast.success(t('toastContainer.channelRename'))
       }}
     >
       {() => (
@@ -72,7 +74,9 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
             <Button
               type="submit"
               variant="primary"
-              onKeyDown={(newNameChannel) => checkValidNewChannel(newNameChannel)}
+              onKeyDown={(newNameChannel) => {
+                checkValidNewChannel(newNameChannel)
+              }}
             >
               {t('modals.buttonSend')}
             </Button>

@@ -32,7 +32,6 @@ const RegistrationForm = () => {
           </div>
         </div>
       </div>
-      <div className="Toastify"></div>
     </>
   )
 }

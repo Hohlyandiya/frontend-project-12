@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import Button from 'react-bootstrap/Button';
+import filter from 'leo-profanity'
 
 const ButtonChannel = ({channel, currentChannel, setCurrentChannel}) => {
 
@@ -13,7 +14,7 @@ const ButtonChannel = ({channel, currentChannel, setCurrentChannel}) => {
 
   return (
     <Button variant={btnClass} className="w-100 rounded-0 text-start" onClick={channelSelectionHandler}>
-      <span className="me-1">#</span>{channel.name}
+      <span className="me-1">#</span>{filter.clean(channel.name)}
     </Button>
   )
 }

@@ -42,11 +42,20 @@ const ruLocales = {
       question: "Уверены?",
       addChannel: 'Добавить канал',
       removeChannel: 'Удалить канал',
-      editChannel: 'Переименовать канал'
+      editChannel: 'Переименовать канал',
+      minAndMaxChars: 'От 3 до 20 символов',
+      uniqueNameChannel: 'Должно быть уникальным',
     },
     dropDownToggle: {
       delete: 'Удалить',
       rename: 'Переименовать',
+    },
+    toastContainer: {
+      channelCreate: 'Канал создан',
+      channelRename: 'Канал переименован',
+      channelDelete: 'Канал удалён',
+      errNetwork: 'Ошибка соединения',
+      errLoadingData: 'Ошибка при загрузке данных'
     }
   }
 }

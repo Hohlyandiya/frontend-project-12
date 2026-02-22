@@ -4,10 +4,10 @@ import deleteChannel from '../../api/deleteChannel'
 import AuthContext from '../../context/index'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify';
 
 const BodyDeletechannel = ({setShow, selectedChannel}) => {
 
-  //const token = localStorage.getItem('token')
   const { user } = useContext(AuthContext)
   const { t } = useTranslation()
 
@@ -18,6 +18,7 @@ const BodyDeletechannel = ({setShow, selectedChannel}) => {
   const removeChannel = async () => {
     await deleteChannel(user.token, selectedChannel.id)
     setShow(false)
+    toast.success(t('toastContainer.channelDelete'))
   }
 
   return (

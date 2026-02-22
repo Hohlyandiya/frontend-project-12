@@ -7,6 +7,8 @@ import Navbar from '../Components/UI/NavBar';
 import Channels from '../Components/Channels';
 import Chat from '../Components/Chat';
 import AuthContext from '../context/index'
+import { useTranslation } from "react-i18next";
+import filter from 'leo-profanity'
 
 const MainPage = () => {
   const navigate = useNavigate()
@@ -14,11 +16,12 @@ const MainPage = () => {
   const token = localStorage.getItem('token')
   const username = localStorage.getItem('username')
   const { setUser } = useContext(AuthContext)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (Object.hasOwn(localStorage, "token")) {
-      loadingChannels(token, dispatch)
-      getMessages(token, dispatch)
+      loadingChannels(token, dispatch, t)
+      getMessages(token, dispatch, t)
       setUser({
         token,
         username
@@ -29,7 +32,14 @@ const MainPage = () => {
     }
   }, []);
 
-  const navigateSignup = () => {
+  filter.loadDictionary('ru')
+  const dictionaryRu = filter.list()
+  filter.loadDictionary('en')
+  const dictionaryEn = filter.list()
+  const dictionaryEnAndRu = [...dictionaryRu, ...dictionaryEn]
+  filter.addDictionary('ru, en', dictionaryEnAndRu)
+
+  /* const navigateSignup = () => {
     navigate('/signup')
   }
 
@@ -39,9 +49,10 @@ const MainPage = () => {
 
   const navigateNotFound = () => {
     navigate('/notFound')
-  }
+  } */
 
   const [currentChannel, setCurrentChannel] = useState(null)
+  
 
   return (
     <>
@@ -58,9 +69,9 @@ const MainPage = () => {
             />
           </div>
         </div>
-        <button onClick={navigateSignup}>Signup</button>
+        {/* <button onClick={navigateSignup}>Signup</button>
         <button onClick={navigateLogin}>Login</button>
-        <button onClick={navigateNotFound}>NotFound</button>
+        <button onClick={navigateNotFound}>NotFound</button> */}
       </div>
     </>
   )
