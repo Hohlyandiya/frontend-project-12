@@ -19,13 +19,8 @@ const channelsSlice = createSlice({
       channelsAdapter.removeOne(state, id)
     },
     editedChannel(state, { payload }) {
-      /* const { id } = payload
-      const restEntities = Object.values(state.entities).filter(channel => channel.id !== id)
-      const updateEntities = {...restEntities, payload}
-      channelsAdapter.setAll(state, updateEntities) */
       channelsAdapter.updateOne(state, payload)
     }
-    //editedChannel: channelsAdapter.updateOne
   }
 })
 

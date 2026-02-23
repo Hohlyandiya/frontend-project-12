@@ -39,18 +39,6 @@ const MainPage = () => {
   const dictionaryEnAndRu = [...dictionaryRu, ...dictionaryEn]
   filter.addDictionary('ru, en', dictionaryEnAndRu)
 
-  /* const navigateSignup = () => {
-    navigate('/signup')
-  }
-
-  const navigateLogin = () => {
-    navigate('/login')
-  }
-
-  const navigateNotFound = () => {
-    navigate('/notFound')
-  } */
-
   const [currentChannel, setCurrentChannel] = useState(null)
   
 
@@ -69,9 +57,6 @@ const MainPage = () => {
             />
           </div>
         </div>
-        {/* <button onClick={navigateSignup}>Signup</button>
-        <button onClick={navigateLogin}>Login</button>
-        <button onClick={navigateNotFound}>NotFound</button> */}
       </div>
     </>
   )

@@ -29,6 +29,16 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
   }, [listChannels])
 
   useEffect(() => {
+    const newNameChannels = listChannels.map(channel => channel.name)
+    const oldNameChannels = channels.map(channel => channel.name)
+    newNameChannels.forEach(name => {
+      if (!oldNameChannels.includes(name)) {
+        setChannels(listChannels)
+      }
+    })
+  }, [listChannels])
+
+  useEffect(() => {
     setCurrentChannel(defaultChannel)
   }, [defaultChannel])
 
