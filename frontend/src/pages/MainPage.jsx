@@ -26,7 +26,6 @@ const MainPage = () => {
         token,
         username
       })
-      //localStorage.clear()
     } else {
       navigate('/login')
     }

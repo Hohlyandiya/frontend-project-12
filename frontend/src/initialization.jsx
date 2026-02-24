@@ -19,16 +19,6 @@ const initialization = () => {
     fallbackLng: "ru",
   });
 
-  /* const rollbarConfig = {
-  accessToken: '8e74e680925b448c9279b025c3d2332f',
-  environment: 'testenv',
-}; */
-
-/* function TestError() {
-  const a = null;
-  return a.hello();
-} */
-
 
   return (
     <RollBarProvider config={rollbarConfig}>
@@ -37,7 +27,6 @@ const initialization = () => {
           <AuthProvider>
             <Provider store={ store }>
               <App />
-              {/* <TestError /> */}
             </Provider>
           </AuthProvider>
         </I18nextProvider>

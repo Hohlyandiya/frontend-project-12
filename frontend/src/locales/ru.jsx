@@ -2,6 +2,7 @@ const ruLocales = {
   translation: {
     mainPage: {
       channels: "Каналы",
+      addChannel: '+',
       send: "Отправить",
       messages_zero: '{{count}} сообщений',
       messages_one: '{{count}} сообщение',
