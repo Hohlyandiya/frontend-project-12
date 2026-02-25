@@ -6,9 +6,7 @@ const renameChannel = (newNameChannel, selectedChannel, token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  })/* .then((response) => {
-    console.log(response.data); // => { id: '3', name: 'new name channel', removable: true }
-  }); */
+  })
 }
 
 export default renameChannel

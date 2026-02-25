@@ -5,9 +5,7 @@ const addNewChannel = (newChannel, token) => {
   headers: {
     Authorization: `Bearer ${token}`,
   },
-})/* .then((response) => {
-  console.log(response.data); // => { id: '3', name: 'new channel', removable: true }
-}); */
+})
 }
 
 export default addNewChannel

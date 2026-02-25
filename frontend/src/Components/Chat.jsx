@@ -74,11 +74,6 @@ const Chat = ({ currentChannel }) => {
     }
   }
 
-  /* const TestError = () => {
-    const a = null
-    a.errorFuncTry()
-  } */
-
   const disabledSendButton = () => fieldMessage.current.value.length !== 0 ? setIsSendButtonDisabled(false) : setIsSendButtonDisabled(true)
   return (
     <div className="col p-0 h-100">
@@ -102,7 +97,6 @@ const Chat = ({ currentChannel }) => {
           </form>
         </div>
       </div>
-      {/* <TestError/> */}
     </div>
   )
 }

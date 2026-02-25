@@ -5,9 +5,7 @@ const deleteChannel = (token, id) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  })/* .then((response) => {
-    console.log(response.data); // => { id: '3' }
-  }); */
+  })
 }
 
 export default deleteChannel
