@@ -13,7 +13,7 @@ export default defineConfig({
     },
   },
   server: {
-    open: '/public/index.html',
+    open: 'http://localhost:5001/',
     port: 5002,
     proxy: {
       // Проксируем запросы к API

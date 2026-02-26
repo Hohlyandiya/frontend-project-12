@@ -18,8 +18,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="login" element={<RegistrationForm />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="signup" element={<PageSignup />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
     <ToastContainer />
