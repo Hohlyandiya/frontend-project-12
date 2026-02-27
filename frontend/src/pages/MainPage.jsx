@@ -39,7 +39,6 @@ const MainPage = () => {
   filter.addDictionary('ru, en', dictionaryEnAndRu)
 
   const [currentChannel, setCurrentChannel] = useState(null)
-  
 
   return (
     <>
