@@ -56,6 +56,7 @@ const MainPage = () => {
           </div>
         </div>
       </div>
+      <button onClick={() => navigate('/signup')}>Signup</button>
     </>
   )
 };
