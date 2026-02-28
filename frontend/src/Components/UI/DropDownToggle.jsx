@@ -34,7 +34,7 @@ const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction,
         />
         
         <Dropdown.Toggle split variant={btnClass} id="dropdown-split-basic">
-          <span className="visually-hidden">{t('modals.channelManagement')}</span>
+          <label className="visually-hidden">{t('modals.channelManagement')}</label>
         </Dropdown.Toggle>
       </ButtonGroup>
 
