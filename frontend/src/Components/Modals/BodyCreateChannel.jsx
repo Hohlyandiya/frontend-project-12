@@ -66,7 +66,6 @@ const BodyCreateChannel = ({setShow, listNameChannels}) => {
             autoComplete="name"
             required=""
             id="name"
-            //placeholder={t('modals.nameChannel')}
           />
           <label class="visually-hidden" htmlFor="name">{t('modals.nameChannel')}</label>
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
