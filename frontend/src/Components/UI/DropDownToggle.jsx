@@ -26,14 +26,16 @@ const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction,
 
   return (
     <Dropdown>
-
       <ButtonGroup className="d-flex">
         <ButtonChannel
           channel={channel}
           currentChannel={currentChannel}
           setCurrentChannel={setCurrentChannel}
         />
-        <Dropdown.Toggle split variant={btnClass} id="dropdown-split-basic" />
+        
+        <Dropdown.Toggle split variant={btnClass} id="dropdown-split-basic">
+          <span className="visually-hidden">{t('modals.channelManagement')}</span>
+        </Dropdown.Toggle>
       </ButtonGroup>
 
       <Dropdown.Menu>
