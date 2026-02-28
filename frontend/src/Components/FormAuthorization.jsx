@@ -33,7 +33,7 @@ const FormAuthorization = ({navigate}) => {
               required=""
               id="username"
             />
-            <label htmlFor="username">{t('forms.username')}</label>
+            <label htmlFor="username">{t('forms.nickName')}</label>
           </div>
           <div className="form-floating mb-4">
             <Field
