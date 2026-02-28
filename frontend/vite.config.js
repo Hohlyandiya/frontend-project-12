@@ -5,12 +5,15 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  root: path.resolve(__dirname, './public'),
   build: {
-    outDir: path.resolve(__dirname, '../dist'),
+    outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
-    rollupOptions: {
-      input: path.resolve(__dirname, 'public/index.html')
-    },
+    /* rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, './public/index.html')
+      }
+    }, */
   },
   server: {
     open: 'http://localhost:5001/',
