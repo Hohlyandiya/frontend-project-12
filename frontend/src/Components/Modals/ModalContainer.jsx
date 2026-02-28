@@ -5,7 +5,7 @@ import BodyRenameChannel from './BodyRenameChannel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useTranslation } from 'react-i18next';
 
-const ModalContainer = ({show, setShow, action, selectedChannel, listNameChannels}) => {
+const ModalContainer = ({show, setShow, action, selectedChannel, listNameChannels, setCurrentChannel}) => {
 
   const { t } = useTranslation()
 
@@ -20,6 +20,7 @@ const ModalContainer = ({show, setShow, action, selectedChannel, listNameChannel
       case ('add'):
         return (
           <BodyCreateChannel
+            setCurrentChannel={setCurrentChannel}
             setShow={setShow}
             listNameChannels={listNameChannels}
           />
