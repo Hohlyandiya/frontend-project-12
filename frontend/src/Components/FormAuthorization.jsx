@@ -28,9 +28,9 @@ const FormAuthorization = ({navigate}) => {
               type="text"
               name="username"
               className={`form-control ${stateField}`}
+              placeholder={t('forms.nickName')}
               autoComplete={t('forms.username')}
               required=""
-              placeholder={t('forms.nickName')}
               id="username"
             />
             <label htmlFor="username">{t('forms.username')}</label>
