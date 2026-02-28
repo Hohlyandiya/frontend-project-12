@@ -18,6 +18,7 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
 
     useEffect(() => {
     fieldChangeName.current.focus()
+    fieldChangeName.current.select()
   }, [fieldChangeName])
 
   const schema = yup.object().shape({
