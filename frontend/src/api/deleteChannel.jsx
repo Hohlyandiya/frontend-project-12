@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 const deleteChannel = (token, id) => {
   axios.delete(`/api/v1/channels/${id}`, {

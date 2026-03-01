@@ -1,12 +1,12 @@
 import img from '../assets/avatar.jpg'
-import FormAuthorization from '../Components/FormAuthorization';
-import { useNavigate, Link } from "react-router-dom";
-import NavBar from '../Components/UI/NavBar';
-import { useTranslation } from 'react-i18next';
+import FormAuthorization from '../components/FormAuthorization'
+import { useNavigate, Link } from 'react-router-dom'
+import NavBar from '../components/UI/NavBar'
+import { useTranslation } from 'react-i18next'
 
 const RegistrationForm = () => {
   const { t } = useTranslation()
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <>
       <div className="d-flex flex-column h-100">
@@ -23,7 +23,7 @@ const RegistrationForm = () => {
                 </div>
                 <div className="card-footer p-4">
                   <div className="text-center">
-                    <span>{t('pageLogin.noAccount')} </span> 
+                    <span>{t('pageLogin.noAccount')} </span>
                     <Link to='/signup'>{t('pageLogin.linkSingup')}</Link>
                   </div>
                 </div>
@@ -36,4 +36,4 @@ const RegistrationForm = () => {
   )
 }
 
-export default RegistrationForm;
+export default RegistrationForm

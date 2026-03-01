@@ -1,6 +1,6 @@
-import axios from "axios";
-import { addMessages } from "../store/slices/messagesSlice";
-import { toast } from "react-toastify";
+import axios from 'axios'
+import { addMessages } from '../store/slices/messagesSlice'
+import { toast } from 'react-toastify'
 
 const getMessages = (token, dispatch, translation) => {
   axios.get('/api/v1/messages', {

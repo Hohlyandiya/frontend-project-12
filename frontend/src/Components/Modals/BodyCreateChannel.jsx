@@ -6,9 +6,9 @@ import cn from 'classnames'
 import addNewChannel from '../../api/addNewChannel'
 import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 
-const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
+const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => {
 
   const { t } = useTranslation()
 
@@ -28,7 +28,7 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
       .max(20, t('modals.minAndMaxChars'))
       .notOneOf(listNameChannels, t('modals.uniqueNameChannel'))
       .required(),
-  });
+  })
 
   const handleClose = () => setShow(false)
 
@@ -42,14 +42,15 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
       await addNewChannel(newChannel, user.token, setCurrentChannel)
       handleClose()
       toast.success(t('toastContainer.channelCreate'))
-    } else {
+    }
+    else {
       setIsNotValidChannel(!isValid)
     }
   }
 
   return (
-    <Formik       
-      initialValues={{ name: "" }}
+    <Formik
+      initialValues={{ name: '' }}
       onSubmit={(newChannel) => {
         checkValidNewChannel(newChannel)
       }}
@@ -60,8 +61,8 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
             innerRef={fieldChannelName}
             type="text"
             name="name"
-            className={cn("mb-2 form-control", {
-              "is-invalid": isNotValidChannel
+            className={cn('mb-2 form-control', {
+              'is-invalid': isNotValidChannel,
             })}
             autoComplete="name"
             required=""
@@ -73,10 +74,10 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
             <Button variant="secondary" className="me-2" onClick={handleClose}>
               {t('modals.buttonClose')}
             </Button>
-            <Button 
+            <Button
               type="submit"
               variant="primary"
-              onKeyDown={(newChannel) => checkValidNewChannel(newChannel)}
+              onKeyDown={newChannel => checkValidNewChannel(newChannel)}
             >
               {t('modals.buttonSend')}
             </Button>
@@ -87,4 +88,4 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
   )
 }
 
-export default BodyCreateChannel;
+export default BodyCreateChannel

@@ -1,16 +1,16 @@
-import { Button } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-import { useContext } from "react"
-import AuthContext from "../../context/index"
-import { useTranslation } from "react-i18next"
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import AuthContext from '../../context/index'
+import { useTranslation } from 'react-i18next'
 
 const NavBar = () => {
 
   const { t } = useTranslation()
 
   const { user, setUser } = useContext(AuthContext)
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const logOut = () => {
     localStorage.clear()

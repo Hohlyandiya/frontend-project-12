@@ -1,7 +1,7 @@
-import ruLocales from "./ru";
+import ruLocales from './ru'
 
 const resources = {
-  ru: ruLocales
+  ru: ruLocales,
 }
 
 export default resources

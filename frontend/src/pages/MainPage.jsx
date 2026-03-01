@@ -1,13 +1,13 @@
-import { useEffect, useState, useContext } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import loadingChannels from '../api/loadingChannels';
-import getMessages from '../api/getMessages';
-import Navbar from '../Components/UI/NavBar';
-import Channels from '../Components/Channels';
-import Chat from '../Components/Chat';
+import { useEffect, useState, useContext } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import loadingChannels from '../api/loadingChannels'
+import getMessages from '../api/getMessages'
+import Navbar from '../components/UI/NavBar'
+import Channels from '../components/Channels'
+import Chat from '../components/Chat'
 import AuthContext from '../context/index'
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next'
 import filter from 'leo-profanity'
 
 const MainPage = () => {
@@ -19,17 +19,18 @@ const MainPage = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (Object.hasOwn(localStorage, "token")) {
+    if (Object.hasOwn(localStorage, 'token')) {
       loadingChannels(token, dispatch, t)
       getMessages(token, dispatch, t)
       setUser({
         token,
-        username
+        username,
       })
-    } else {
+    }
+    else {
       navigate('/login')
     }
-  }, []);
+  }, [])
 
   filter.loadDictionary('ru')
   const dictionaryRu = filter.list()
@@ -59,6 +60,6 @@ const MainPage = () => {
       <button onClick={() => navigate('/signup')}>Signup</button>
     </>
   )
-};
+}
 
-export default MainPage;
+export default MainPage

@@ -6,9 +6,9 @@ import cn from 'classnames'
 import renameChannel from '../../api/renameChannel'
 import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 
-const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
+const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
 
   const fieldChangeName = useRef()
   const { user } = useContext(AuthContext)
@@ -16,7 +16,7 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   const [errors, setErrors] = useState('')
   const { t } = useTranslation()
 
-    useEffect(() => {
+  useEffect(() => {
     fieldChangeName.current.focus()
     fieldChangeName.current.select()
   }, [fieldChangeName])
@@ -28,7 +28,7 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
       .max(20, t('modals.minAndMaxChars'))
       .notOneOf(listNameChannels, t('modals.uniqueNameChannel'))
       .required(),
-  });
+  })
 
   const handleClose = () => setShow(false)
 
@@ -39,7 +39,8 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
 
     if (!isValid) {
       setIsNotValidChannel(!isValid)
-    } else {
+    }
+    else {
       setIsNotValidChannel(isValid)
       await renameChannel(newNameChannel, selectedChannel, user.token)
       handleClose()
@@ -47,7 +48,7 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   }
 
   return (
-    <Formik       
+    <Formik
       initialValues={{ name: selectedChannel.name }}
       onSubmit={(newNameChannel) => {
         checkValidNewChannel(newNameChannel)
@@ -60,8 +61,8 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
             innerRef={fieldChangeName}
             type="text"
             name="name"
-            className={cn("mb-2 form-control", {
-              "is-invalid": isNotValidChannel
+            className={cn('mb-2 form-control', {
+              'is-invalid': isNotValidChannel,
             })}
             autoComplete="name"
             required=""
@@ -89,4 +90,4 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   )
 }
 
-export default BodyRenameChannel;
+export default BodyRenameChannel

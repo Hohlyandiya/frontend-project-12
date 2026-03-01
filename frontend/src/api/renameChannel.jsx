@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios'
 
 const renameChannel = (newNameChannel, selectedChannel, token) => {
-  const editedChannel = newNameChannel;
-    axios.patch(`/api/v1/channels/${selectedChannel.id}`, editedChannel, {
+  const editedChannel = newNameChannel
+  axios.patch(`/api/v1/channels/${selectedChannel.id}`, editedChannel, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -1,16 +1,16 @@
-import { useRef, useState, useEffect, useContext } from "react"
-import { shallowEqual, useDispatch, useSelector } from "react-redux"
-import { selectors } from "../store/slices/messagesSlice"
+import { useRef, useState, useEffect, useContext } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { selectors } from '../store/slices/messagesSlice'
 import postNewMessage from '../api/postMessage'
 import { io } from 'socket.io-client'
 import { addMessage } from '../store/slices/messagesSlice'
-import Messages from "./UI/Messages"
+import Messages from './UI/Messages'
 import AuthContext from '../context/index'
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 import filter from 'leo-profanity'
 
 const Chat = ({ currentChannel }) => {
-  const listMessages = Object.values(useSelector((state) => selectors.selectEntities(state), shallowEqual))
+  const listMessages = Object.values(useSelector(state => selectors.selectEntities(state), shallowEqual))
 
   const { user } = useContext(AuthContext)
   const fieldMessage = useRef()
@@ -29,47 +29,48 @@ const Chat = ({ currentChannel }) => {
 
   useEffect(() => {
     const handleOnline = () => {
-      setIsOnline(true);
+      setIsOnline(true)
       if (pendingMessage) {
         postNewMessage(pendingMessage, currentChannel.id, user.username, user.token)
-        setIsFieldDisabled(false)
+        setIsFieldDisbaled(false)
         fieldMessage.current.value = ''
         setPendingMessage(null)
       }
-    };
+    }
     const handleOffline = () => {
       setIsOnline(false)
-    };
-  
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-  
+    }
+
+    window.addEventListener('online', handleOnline)
+    window.addEventListener('offline', handleOffline)
+
     return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, [pendingMessage]);
+      window.removeEventListener('online', handleOnline)
+      window.removeEventListener('offline', handleOffline)
+    }
+  }, [pendingMessage])
 
   useEffect(() => {
-      const socket = io();
-  
-      socket.on('newMessage', (payload) => {
-        dispatch(addMessage(payload))
-      });
-  
-      return () => {
-        socket.disconnect();
-      };
-    }, []);
+    const socket = io()
+
+    socket.on('newMessage', (payload) => {
+      dispatch(addMessage(payload))
+    })
+
+    return () => {
+      socket.disconnect()
+    }
+  }, [])
 
   const sendMessage = async (e) => {
     e.preventDefault()
     setIsFieldDisabled(true)
-    const response = await postNewMessage(fieldMessage.current.value, currentChannel.id, user.username, user.token)
-    if (response) {
+    await postNewMessage(fieldMessage.current.value, currentChannel.id, user.username, user.token)
+    if (isOnline) {
       fieldMessage.current.value = ''
       setIsFieldDisabled(false)
-    } else {
+    }
+    else {
       setPendingMessage(fieldMessage.current.value)
     }
   }
@@ -80,7 +81,7 @@ const Chat = ({ currentChannel }) => {
       <div className="d-flex flex-column h-100">
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0"><b># {filter.clean(currentChannel?.name)}</b></p>
-          <span className="text-muted">{t('mainPage.messages', {count: totalMessages})}</span>
+          <span className="text-muted">{t('mainPage.messages', { count: totalMessages })}</span>
         </div>
         <Messages messages={listMessages} currentChannel={currentChannel}/>
         <div className="mt-auto px-5 py-3">
