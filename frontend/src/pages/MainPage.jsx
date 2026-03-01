@@ -38,7 +38,6 @@ const MainPage = () => {
   const dictionaryEn = filter.list()
   const dictionaryEnAndRu = [...dictionaryRu, ...dictionaryEn]
   filter.addDictionary('ru, en', dictionaryEnAndRu)
-
   const [currentChannel, setCurrentChannel] = useState(null)
 
   return (
