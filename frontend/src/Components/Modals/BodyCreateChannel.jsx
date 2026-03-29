@@ -1,12 +1,12 @@
 import { useState, useContext, useRef, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import Button from 'react-bootstrap/esm/Button'
-import * as yup from 'yup'
 import cn from 'classnames'
 import addNewChannel from '../../api/addNewChannel'
 import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
+import { schemaNameChannel } from '../../schems/schemaRename'
 
 const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => {
 
@@ -21,14 +21,7 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
     fieldChannelName.current.focus()
   }, [fieldChannelName])
 
-  const schema = yup.object().shape({
-    name: yup.string()
-      .trim()
-      .min(3, t('modals.minAndMaxChars'))
-      .max(20, t('modals.minAndMaxChars'))
-      .notOneOf(listNameChannels, t('modals.uniqueNameChannel'))
-      .required(),
-  })
+  const schema = schemaNameChannel(listNameChannels)
 
   const handleClose = () => setShow(false)
 

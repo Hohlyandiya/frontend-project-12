@@ -9,17 +9,18 @@ const FormAuthorization = ({ navigate }) => {
   const { t } = useTranslation()
   const [stateField, setStateField] = useState('')
   const tooltip = (stateField !== '') ? <div className="invalid-tooltip">{t('pageLogin.errorMessage')}</div> : ''
+  const checkOnline = async (username, password) => {
+    if (navigator.onLine) {
+      await handlerLogin(username.value, password.value, setStateField, navigate)
+    }
+    else {
+      toast.error(t('toastContainer.errNetwork'))
+    }
+  }
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
-      onSubmit={ async () => {
-        if (navigator.onLine) {
-          await handlerLogin(username.value, password.value, setStateField, navigate)
-        }
-        else {
-          toast.error(t('toastContainer.errNetwork'))
-        }
-      }}
+      onSubmit={checkOnline(username, password)}
     >
       {() => (
         <Form className="col-12 col-md-6 mt-3 mt-md-0">

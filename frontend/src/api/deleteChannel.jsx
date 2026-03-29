@@ -1,11 +1,8 @@
 import axios from 'axios'
+import { getApi } from './apiInstance'
 
-const deleteChannel = (token, id) => {
-  axios.delete(`/api/v1/channels/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
+const deleteChannel = (id) => {
+  axios.delete(`/api/v1/channels/${id}`, getApi())
 }
 
 export default deleteChannel

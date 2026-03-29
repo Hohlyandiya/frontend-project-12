@@ -9,6 +9,7 @@ import Chat from '../components/Chat'
 import AuthContext from '../context/index'
 import { useTranslation } from 'react-i18next'
 import filter from 'leo-profanity'
+import { initApi } from '../api/apiInstance'
 
 const MainPage = () => {
   const navigate = useNavigate()
@@ -19,6 +20,7 @@ const MainPage = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
+    initApi(token)
     if (Object.hasOwn(localStorage, 'token')) {
       loadingChannels(token, dispatch, t)
       getMessages(token, dispatch, t)

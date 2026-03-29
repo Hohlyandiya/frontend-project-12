@@ -3,12 +3,12 @@ import NavBar from '../components/UI/NavBar'
 import img from '../assets/signup.jpg'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button } from 'react-bootstrap'
-import * as yup from 'yup'
 import createNewUser from '../api/createNewUser'
 import { useNavigate } from 'react-router-dom'
 import cn from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
+import schemaSignup from '../schems/schemaSingup'
 
 const PageSignup = () => {
 
@@ -18,38 +18,24 @@ const PageSignup = () => {
 
   const [isUserExists, setIsUserExists] = useState(false)
 
-  const schema = yup.object().shape({
-    username: yup.string()
-      .trim()
-      .min(3, 'От 3 до 20 символов')
-      .max(20, 'От 3 до 20 символов')
-      .required('Обязательное поле'),
-    password: yup.string()
-      .trim()
-      .min(6, 'Не менее 6 символов')
-      .required('Обязательное поле'),
-    confirmPassword: yup.string()
-      .trim()
-      .test({
-        name: 'confirmPassword',
-        message: 'Пароли должны совпадать',
-        test: (password, context) => password === context.parent.password,
-      }),
-  })
-
   const checkIsUserExists = async (user) => {
-    const { username, password } = user
-    const newUser = {
-      username: username,
-      password: password,
-    }
-    const result = await createNewUser(newUser)
-    if (result) {
-      setIsUserExists(false)
-      navigate('/')
+    if (navigator.onLine) {
+      const { username, password } = user
+      const newUser = {
+        username: username,
+        password: password,
+      }
+      const result = await createNewUser(newUser)
+      if (result) {
+        setIsUserExists(false)
+        navigate('/')
+      }
+      else {
+        setIsUserExists(true)
+      }
     }
     else {
-      setIsUserExists(true)
+      toast.error(t('toastContainer.errNetwork'))
     }
   }
 
@@ -67,14 +53,9 @@ const PageSignup = () => {
                   </div>
                   <Formik
                     initialValues={{ username: '', password: '', confirmPassword: '' }}
-                    validationSchema={schema}
+                    validationSchema={schemaSignup}
                     onSubmit={(newUser) => {
-                      if (navigator.onLine) {
-                        checkIsUserExists(newUser)
-                      }
-                      else {
-                        toast.error(t('toastContainer.errNetwork'))
-                      }
+                      checkIsUserExists(newUser)
                     }}
                   >
                     {({ values, errors, touched }) => (
