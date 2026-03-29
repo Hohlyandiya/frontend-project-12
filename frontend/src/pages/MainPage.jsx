@@ -20,7 +20,7 @@ const MainPage = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    initApi(token)
+    initApi()
     if (Object.hasOwn(localStorage, 'token')) {
       loadingChannels(token, dispatch, t)
       getMessages(token, dispatch, t)
