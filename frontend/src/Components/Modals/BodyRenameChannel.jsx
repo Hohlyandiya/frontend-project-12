@@ -6,7 +6,7 @@ import renameChannel from '../../api/renameChannel'
 import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
-import { schemaNameChannel } from '../../schems/schemaRename'
+import schemaNameChannel from '../../schems/schemaNameChannel'
 
 const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
 
