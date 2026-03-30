@@ -20,6 +20,14 @@
   },
   "homepage": "https://github.com/Hohlyandiya/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^2.0.4"
+    "@hexlet/chat-server": "^2.0.4",
+    "@reduxjs/toolkit": "^2.11.2",
+    "@rollbar/react": "^1.0.0",
+    "bootstrap": "^5.3.8",
+    "react-bootstrap": "^2.10.10",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.13.1",
+    "rollbar": "^2.26.5",
+    "socket.io": "^4.8.3"
   }
 }
