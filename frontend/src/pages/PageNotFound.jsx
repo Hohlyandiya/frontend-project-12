@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import img from '../assets/NotFound404.svg'
-import NavBar from '../components/UI/NavBar.jsx'
+import NavBar from '../components/UI/NavBar'
 import { Link } from 'react-router-dom'
 
 const NotFound = () => {

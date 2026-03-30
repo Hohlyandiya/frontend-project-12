@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import loadingChannels from '../api/loadingChannels'
 import getMessages from '../api/getMessages'
-import Navbar from '../components/UI/NavBar.jsx'
+import NavBar from '../components/UI/NavBar'
 import Channels from '../components/Channels'
 import Chat from '../components/Chat'
 import AuthContext from '../context/index'
@@ -45,7 +45,7 @@ const MainPage = () => {
   return (
     <>
       <div className="d-flex flex-column h-100">
-        <Navbar/>
+        <NavBar/>
         <div className="container h-100 my-4 overflow-hidden rounded shadow">
           <div className="row h-100 bg-white flex-md-row">
             <Channels
