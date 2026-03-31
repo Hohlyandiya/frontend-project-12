@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import NavBar from '../components/UI/NavBar'
+import NavBar from '../Components/UI/NavBar'
 import img from '../assets/signup.jpg'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button } from 'react-bootstrap'
