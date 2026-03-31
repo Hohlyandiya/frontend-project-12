@@ -1,7 +1,7 @@
 import img from '../assets/avatar.jpg'
 import FormAuthorization from '../components/FormAuthorization'
 import { useNavigate, Link } from 'react-router-dom'
-import NavBar from '../components/UI/NavBar'
+import NavBar from '../Components/UI/NavBar'
 import { useTranslation } from 'react-i18next'
 
 const RegistrationForm = () => {
