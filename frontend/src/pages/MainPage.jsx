@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import loadingChannels from '../api/loadingChannels'
 import getMessages from '../api/getMessages'
-import NavBar from '../components/UI/NavBar'
-import Channels from '../components/Channels'
-import Chat from '../components/Chat'
+import NavBar from '../Components/UI/NavBar'
+import Channels from '../Components/Channels'
+import Chat from '../Components/Chat'
 import AuthContext from '../context/index'
 import { useTranslation } from 'react-i18next'
 import filter from 'leo-profanity'
@@ -20,8 +20,8 @@ const MainPage = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    initApi()
     if (Object.hasOwn(localStorage, 'token')) {
+      initApi()
       loadingChannels(token, dispatch, t)
       getMessages(token, dispatch, t)
       setUser({
