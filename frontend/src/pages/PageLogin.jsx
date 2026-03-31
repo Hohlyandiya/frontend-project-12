@@ -1,5 +1,5 @@
 import img from '../assets/avatar.jpg'
-import FormAuthorization from '../components/FormAuthorization'
+import FormAuthorization from '../Components/FormAuthorization'
 import { useNavigate, Link } from 'react-router-dom'
 import NavBar from '../Components/UI/NavBar'
 import { useTranslation } from 'react-i18next'

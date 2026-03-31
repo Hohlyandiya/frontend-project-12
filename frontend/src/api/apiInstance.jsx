@@ -3,11 +3,13 @@ import axios from 'axios'
 let apiInstance = null
 
 export const initApi = (token) => {
-  apiInstance = axios.create({
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
+  if (!apiInstance) {
+    apiInstance = axios.create({
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  }
 }
 
 export const getApi = () => {
