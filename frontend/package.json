@@ -10,7 +10,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "npx start-server -s ./dist"
+    "start": "npx start-server -s ./dist",
+    "start-test": "GENERATE_SOURCEMAP=true react-scripts start",
+    "build-test": "GENERATE_SOURCEMAP=true react-scripts build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",

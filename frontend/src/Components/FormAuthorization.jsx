@@ -20,7 +20,7 @@ const FormAuthorization = ({ navigate }) => {
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
-      onSubmit={checkOnline(username, password)}
+      onSubmit={(username, password) => checkOnline(username, password)}
     >
       {() => (
         <Form className="col-12 col-md-6 mt-3 mt-md-0">

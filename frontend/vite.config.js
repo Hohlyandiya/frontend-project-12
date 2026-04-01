@@ -9,10 +9,12 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
+    sourcemap: true,
   },
   server: {
     open: 'http://localhost:5001/',
     port: 5002,
+    sourcemap: true,
     proxy: {
       // Проксируем запросы к API
       '/api': {

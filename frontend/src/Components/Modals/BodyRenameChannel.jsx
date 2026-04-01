@@ -40,12 +40,16 @@ const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
     }
   }
 
+  const editedChannel = (newNameChannel) => {
+    checkValidNewChannel(newNameChannel)
+    toast.success(t('toastContainer.channelRename'))
+  }
+
   return (
     <Formik
       initialValues={{ name: selectedChannel.name }}
       onSubmit={(newNameChannel) => {
-        checkValidNewChannel(newNameChannel)
-        toast.success(t('toastContainer.channelRename'))
+        editedChannel(newNameChannel)
       }}
     >
       {() => (

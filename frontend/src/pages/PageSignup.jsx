@@ -22,8 +22,8 @@ const PageSignup = () => {
     if (navigator.onLine) {
       const { username, password } = user
       const newUser = {
-        username: username,
-        password: password,
+        username,
+        password,
       }
       const result = await createNewUser(newUser)
       if (result) {
