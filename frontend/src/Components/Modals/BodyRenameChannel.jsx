@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import Button from 'react-bootstrap/esm/Button'
 import * as yup from 'yup'
 import cn from 'classnames'
-import renameChannel from '../../api/RenameChannel'
+import renameChannel from '../../api/renameChannel'
 import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify';
