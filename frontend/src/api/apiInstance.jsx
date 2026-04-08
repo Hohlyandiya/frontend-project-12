@@ -2,6 +2,12 @@ import axios from 'axios'
 
 let apiInstance = null
 
+export const updateApi = (newToken) => {
+  if (apiInstance) {
+    apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newToken}`
+  }
+}
+
 export const initApi = (token) => {
   if (!apiInstance) {
     apiInstance = axios.create({
@@ -9,15 +15,16 @@ export const initApi = (token) => {
         Authorization: `Bearer ${token}`,
       },
     })
+  } else {
+    updateApi(token)
   }
 }
 
 export const getApi = () => {
-  return apiInstance
-}
-
-export const updateApi = (newToken) => {
-  if (apiInstance) {
-    apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newToken}`
-  }
+  const authorizationValue = apiInstance.defaults.headers.Authorization
+  const authorization = {headers: {
+    Authorization: authorizationValue
+  }}
+  //console.log(authorization)
+  return authorization
 }

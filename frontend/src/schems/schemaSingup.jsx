@@ -1,22 +1,28 @@
 import * as yup from 'yup'
+import { useTranslation } from 'react-i18next'
 
-const schemaSignup = yup.object().shape({
+const schemaSignup = () => {
+
+  const { t } = useTranslation()
+
+  return yup.object().shape({
   username: yup.string()
     .trim()
-    .min(3, 'От 3 до 20 символов')
-    .max(20, 'От 3 до 20 символов')
-    .required('Обязательное поле'),
+    .min(3, t('forms.minAndMaxChars'))
+    .max(20, t('forms.minAndMaxChars'))
+    .required(t('forms.requiredField')),
   password: yup.string()
     .trim()
-    .min(6, 'Не менее 6 символов')
-    .required('Обязательное поле'),
+    .min(6, t('forms.minChars'))
+    .required(t('forms.requiredField')),
   confirmPassword: yup.string()
     .trim()
     .test({
       name: 'confirmPassword',
-      message: 'Пароли должны совпадать',
+      message: t('forms.PasswordsDontMatch'),
       test: (password, context) => password === context.parent.password,
     }),
 })
+}
 
 export default schemaSignup

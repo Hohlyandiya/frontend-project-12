@@ -1,9 +1,12 @@
-import axios from 'axios'
-import { getApi } from './apiInstance'
+import axios from "axios";
+import { getApi } from "./apiInstance";
 
-const addNewChannel = (newChannel, setCurrentChannel) => {
-  axios.post('/api/v1/channels', newChannel, getApi())
-    .then(response => setCurrentChannel(response.data))
+const addNewChannel = (newChannel/* , token */) => {
+  axios.post('/api/v1/channels', newChannel, getApi()/* {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+} */)
 }
 
 export default addNewChannel

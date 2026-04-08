@@ -1,26 +1,32 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Button } from 'react-bootstrap'
-import handlerLogin from '../api/handlerLogin'
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { toast } from 'react-toastify'
+import { Button } from 'react-bootstrap';
+import handlerLogin from '../api/handlerLogin';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
-const FormAuthorization = ({ navigate }) => {
+const FormAuthorization = ({navigate}) => {
   const { t } = useTranslation()
-  const [stateField, setStateField] = useState('')
-  const tooltip = (stateField !== '') ? <div className="invalid-tooltip">{t('pageLogin.errorMessage')}</div> : ''
+  const [stateField, setStateField] = useState("")
+  const tooltip = (stateField !== "") ? <div className="invalid-tooltip">{t('pageLogin.errorMessage')}</div> : ""
   const checkOnline = async (username, password) => {
     if (navigator.onLine) {
-      await handlerLogin(username.value, password.value, setStateField, navigate)
+      await handlerLogin(username, password, setStateField, navigate)
     }
     else {
       toast.error(t('toastContainer.errNetwork'))
     }
   }
   return (
-    <Formik
-      initialValues={{ username: '', password: '' }}
-      onSubmit={(username, password) => checkOnline(username, password)}
+    <Formik       
+      initialValues={{ username: "", password: "" }}
+      onSubmit={ /* async */ () => {checkOnline(username.value, password.value)
+        /* if (navigator.onLine) {
+          await handlerLogin(username.value, password.value, setStateField, navigate)
+        } else {
+          toast.error(t('toastContainer.errNetwork'))
+        } */
+      }}
     >
       {() => (
         <Form className="col-12 col-md-6 mt-3 mt-md-0">
@@ -30,12 +36,12 @@ const FormAuthorization = ({ navigate }) => {
               type="text"
               name="username"
               className={`form-control ${stateField}`}
-              placeholder={t('forms.nickName')}
               autoComplete={t('forms.username')}
               required=""
+              placeholder={t('forms.nickName')}
               id="username"
             />
-            <label htmlFor="username">{t('forms.nickName')}</label>
+            <label htmlFor="username">{t('forms.username')}</label>
           </div>
           <div className="form-floating mb-4">
             <Field
@@ -49,6 +55,7 @@ const FormAuthorization = ({ navigate }) => {
             />
             <label className="form-label" htmlFor="password">{t('forms.password')}</label>
             {tooltip}
+            {/* <ErrorMessage name=''>{tooltip}</ErrorMessage> */}
           </div>
           <Button type='submit' variant='outline-primary' className="w-100 mb-3">{t('pageLogin.login')}</Button>
         </Form>
@@ -57,4 +64,4 @@ const FormAuthorization = ({ navigate }) => {
   )
 }
 
-export default FormAuthorization
+export default FormAuthorization;

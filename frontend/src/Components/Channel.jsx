@@ -1,7 +1,8 @@
 import DropDownToggle from './UI/DropDownToggle'
 import ButtonChannel from './UI/ButtonChannel'
 
-const Channel = ({ channel, currentChannel, setCurrentChannel, setAction, setShow, setSelectedChannel }) => {
+const Channel = ({channel, currentChannel, setCurrentChannel, setAction, setShow, setSelectedChannel}) => {
+
   return channel.removable ? (
     <li key={channel.id} className="nav-item w-100">
       <DropDownToggle
@@ -15,13 +16,13 @@ const Channel = ({ channel, currentChannel, setCurrentChannel, setAction, setSho
     </li>
   ) : (
     <li key={channel.id} className="nav-item w-100">
-      <ButtonChannel
+      <ButtonChannel 
         channel={channel}
         currentChannel={currentChannel}
         setCurrentChannel={setCurrentChannel}
       />
     </li>
-  )
+    )
 }
 
 export default Channel
