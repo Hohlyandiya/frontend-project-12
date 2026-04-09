@@ -50,7 +50,8 @@ const ruLocales = {
       editChannel: 'Переименовать канал',
       minAndMaxChars: 'От 3 до 20 символов',
       uniqueNameChannel: 'Должно быть уникальным',
-      nameChannel: 'Имя канала'
+      nameChannel: 'Имя канала',
+      channelManagement: 'Управление каналом'
     },
     dropDownToggle: {
       delete: 'Удалить',
