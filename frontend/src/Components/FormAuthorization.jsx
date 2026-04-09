@@ -1,14 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Button } from 'react-bootstrap';
-import handlerLogin from '../api/handlerLogin';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
+import { Button } from 'react-bootstrap'
+import handlerLogin from '../api/handlerLogin'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
-const FormAuthorization = ({navigate}) => {
+const FormAuthorization = ({ navigate }) => {
   const { t } = useTranslation()
-  const [stateField, setStateField] = useState("")
-  const tooltip = (stateField !== "") ? <div className="invalid-tooltip">{t('pageLogin.errorMessage')}</div> : ""
+  const [stateField, setStateField] = useState('')
+  const tooltip = (stateField !== '') ? <div className="invalid-tooltip">{t('pageLogin.errorMessage')}</div> : ''
   const checkOnline = async (username, password) => {
     if (navigator.onLine) {
       await handlerLogin(username, password, setStateField, navigate)
@@ -18,9 +18,10 @@ const FormAuthorization = ({navigate}) => {
     }
   }
   return (
-    <Formik       
-      initialValues={{ username: "", password: "" }}
-      onSubmit={ /* async */ () => {checkOnline(username.value, password.value)
+    <Formik
+      initialValues={{ username: '', password: '' }}
+      onSubmit={ /* async */ () => {
+        checkOnline(username.value, password.value)
         /* if (navigator.onLine) {
           await handlerLogin(username.value, password.value, setStateField, navigate)
         } else {
@@ -64,4 +65,4 @@ const FormAuthorization = ({navigate}) => {
   )
 }
 
-export default FormAuthorization;
+export default FormAuthorization

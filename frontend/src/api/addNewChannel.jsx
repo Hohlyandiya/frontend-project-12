@@ -1,5 +1,5 @@
-import axios from "axios";
-import { getApi } from "./apiInstance";
+import axios from 'axios'
+import { getApi } from './apiInstance'
 
 const addNewChannel = (newChannel/* , token */, setCurrentChannel) => {
   axios.post('/api/v1/channels', newChannel, getApi()/* {

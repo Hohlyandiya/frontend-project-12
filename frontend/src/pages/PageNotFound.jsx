@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 import img from '../assets/NotFound404.svg'
-import NavBar from '../Components/UI/NavBar';
-import { Link } from 'react-router-dom';
+import NavBar from '../Components/UI/NavBar'
+import { Link } from 'react-router-dom'
 
 const NotFound = () => {
 
@@ -23,4 +23,4 @@ const NotFound = () => {
   )
 }
 
-export default NotFound;
+export default NotFound

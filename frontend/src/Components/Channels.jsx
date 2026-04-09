@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { selectors } from "../store/slices/channelsSlice"
-import Channel from "./Channel"
-import { addChannel, deleteChannel, editedChannel } from "../store/slices/channelsSlice"
-import { io } from "socket.io-client"
-import getDefaultChannel from "../lib/getDefaultChannel"
-import ModalContainer from '../Components/Modals/ModalContainer';
-import { useTranslation } from "react-i18next"
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectors } from '../store/slices/channelsSlice'
+import Channel from './Channel'
+import { addChannel, deleteChannel, editedChannel } from '../store/slices/channelsSlice'
+import { io } from 'socket.io-client'
+import getDefaultChannel from '../lib/getDefaultChannel'
+import ModalContainer from '../Components/Modals/ModalContainer'
+import { useTranslation } from 'react-i18next'
 
-const Channels = ({ currentChannel, setCurrentChannel}) => {
+const Channels = ({ currentChannel, setCurrentChannel }) => {
 
-  const listChannels = Object.values(useSelector((state) => selectors.selectEntities(state)))
+  const listChannels = Object.values(useSelector(state => selectors.selectEntities(state)))
 
   const [channels, setChannels] = useState([])
   const [show, setShow] = useState(false)
@@ -20,7 +20,7 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
   const { t } = useTranslation()
 
   const defaultChannel = getDefaultChannel(listChannels)
-  const listNameChannels = listChannels.map((channel) => channel.name)
+  const listNameChannels = listChannels.map(channel => channel.name)
 
   useEffect(() => {
     if (channels.length !== listChannels.length) {
@@ -31,7 +31,7 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
   useEffect(() => {
     const newNameChannels = listChannels.map(channel => channel.name)
     const oldNameChannels = channels.map(channel => channel.name)
-    newNameChannels.forEach(name => {
+    newNameChannels.forEach((name) => {
       if (!oldNameChannels.includes(name)) {
         setChannels(listChannels)
       }
@@ -49,29 +49,29 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
   }, [channels, currentChannel])
 
   useEffect(() => {
-    const socket = io();
-  
+    const socket = io()
+
     socket.on('newChannel', (payload) => {
       dispatch(addChannel(payload))
       //setCurrentChannel(payload)
-    });
+    })
 
     socket.on('removeChannel', (payload) => {
       setCurrentChannel(null)
       dispatch(deleteChannel(payload))
-    });
+    })
 
     socket.on('renameChannel', (payload) => {
       const { id, name } = payload
       const changes = { name }
       const changeData = { id, changes }
       dispatch(editedChannel(changeData))
-    });
-  
+    })
+
     return () => {
-      socket.disconnect();
-    };
-  }, []);
+      socket.disconnect()
+    }
+  }, [])
 
   const addNewChannel = () => {
     setShow(true)
@@ -92,20 +92,20 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
         </button>
       </div>
       <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
-      {channels.map(channel => {
-        return (
-          <Channel
-            channel={channel}
-            currentChannel={currentChannel}
-            setCurrentChannel={setCurrentChannel}
-            setAction={setAction}
-            setShow={setShow}
-            key={channel.id}
-            channels={channels}
-            setSelectedChannel={setSelectedChannel}
-          />
-        )
-      })}
+        {channels.map((channel) => {
+          return (
+            <Channel
+              channel={channel}
+              currentChannel={currentChannel}
+              setCurrentChannel={setCurrentChannel}
+              setAction={setAction}
+              setShow={setShow}
+              key={channel.id}
+              channels={channels}
+              setSelectedChannel={setSelectedChannel}
+            />
+          )
+        })}
       </ul>
       <ModalContainer
         show={show}

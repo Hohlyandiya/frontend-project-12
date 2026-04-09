@@ -1,16 +1,16 @@
-import axios from "axios";
+import axios from 'axios'
 
 const handlerLogin = async (username, password, setStateField, navigate) => {
   await axios.post('/api/v1/login', { username, password })
-    .catch((e) => {
-      setStateField("is-invalid")
+    .catch(() => {
+      setStateField('is-invalid')
     })
     .then((resp) => {
       localStorage.setItem('token', resp.data.token)
       localStorage.setItem('username', resp.data.username)
-      setStateField("")
+      setStateField('')
       navigate(('/'))
     })
-} 
+}
 
-export default handlerLogin;
+export default handlerLogin

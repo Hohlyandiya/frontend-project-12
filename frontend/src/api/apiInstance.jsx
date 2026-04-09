@@ -15,16 +15,17 @@ export const initApi = (token) => {
         Authorization: `Bearer ${token}`,
       },
     })
-  } else {
+  }
+  else {
     updateApi(token)
   }
 }
 
 export const getApi = () => {
   const authorizationValue = apiInstance.defaults.headers.Authorization
-  const authorization = {headers: {
-    Authorization: authorizationValue
-  }}
+  const authorization = { headers: {
+    Authorization: authorizationValue,
+  } }
   //console.log(authorization)
   return authorization
 }

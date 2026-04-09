@@ -1,28 +1,28 @@
-import Dropdown from 'react-bootstrap/Dropdown';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ButtonChannel from './ButtonChannel';
+import Dropdown from 'react-bootstrap/Dropdown'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import ButtonChannel from './ButtonChannel'
 import cn from 'classnames'
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
-const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction, setShow, setSelectedChannel}) => {
+const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction, setShow, setSelectedChannel }) => {
 
   const { t } = useTranslation()
 
-    const btnClass = cn('', {
-      'secondary': currentChannel?.id === channel.id ? true : false,
-    })
+  const btnClass = cn('', {
+    secondary: currentChannel?.id === channel.id ? true : false,
+  })
 
-    const removeChannel = () => {
-      setShow(true)
-      setAction('remove')
-      setSelectedChannel(channel)
-    }
+  const removeChannel = () => {
+    setShow(true)
+    setAction('remove')
+    setSelectedChannel(channel)
+  }
 
-    const editChannel = () => {
-      setShow(true)
-      setAction('edit')
-      setSelectedChannel(channel)
-    }
+  const editChannel = () => {
+    setShow(true)
+    setAction('edit')
+    setSelectedChannel(channel)
+  }
 
   return (
     <Dropdown>

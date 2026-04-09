@@ -1,7 +1,7 @@
 import { useState, /* useContext, */ useRef, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import Button from 'react-bootstrap/esm/Button'
-import * as yup from 'yup'
+//import * as yup from 'yup'
 import cn from 'classnames'
 import renameChannel from '../../api/renameChannel'
 //import AuthContext from '../../context/index'
@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import schemaNameChannel from '../../schems/schemaNameChannel'
 
-const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
+const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
 
   const fieldChangeName = useRef()
   //const { user } = useContext(AuthContext)
@@ -17,13 +17,13 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   const [errors, setErrors] = useState('')
   const { t } = useTranslation()
 
-    useEffect(() => {
+  useEffect(() => {
     fieldChangeName.current.focus()
   }, [fieldChangeName])
 
   const schema = schemaNameChannel(listNameChannels)
 
-/*   const schema = yup.object().shape({
+  /*   const schema = yup.object().shape({
     name: yup.string()
       .trim()
       .min(3, t('modals.minAndMaxChars'))
@@ -41,7 +41,8 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
 
     if (!isValid) {
       setIsNotValidChannel(!isValid)
-    } else {
+    }
+    else {
       setIsNotValidChannel(isValid)
       await renameChannel(newNameChannel, selectedChannel/* , user.token */)
       handleClose()
@@ -49,8 +50,8 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   }
 
   return (
-    <Formik       
-      initialValues={{ name: "" }}
+    <Formik
+      initialValues={{ name: '' }}
       onSubmit={(newNameChannel) => {
         checkValidNewChannel(newNameChannel)
         toast.success(t('toastContainer.channelRename'))
@@ -60,17 +61,17 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
         <Form className="">
           <div className="form-floating mb-3">
             <Field
-            innerRef={fieldChangeName}
-            type="text"
-            name="name"
-            className={cn("mb-2 form-control", {
-              "is-invalid": isNotValidChannel
-            })}
-            autoComplete="name"
-            required=""
-            id="name"
-          />
-          <label htmlFor="name" className="form-label" >{t('modals.nameChannel')}</label>
+              innerRef={fieldChangeName}
+              type="text"
+              name="name"
+              className={cn('mb-2 form-control', {
+                'is-invalid': isNotValidChannel,
+              })}
+              autoComplete="name"
+              required=""
+              id="name"
+            />
+            <label htmlFor="name" className="form-label" >{t('modals.nameChannel')}</label>
           </div>
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
           <div className="d-flex justify-content-end">
@@ -93,4 +94,4 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
   )
 }
 
-export default BodyRenameChannel;
+export default BodyRenameChannel

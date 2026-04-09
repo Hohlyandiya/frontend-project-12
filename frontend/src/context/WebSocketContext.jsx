@@ -1,12 +1,11 @@
-import { createContext, useContext } from 'react';
-import io from 'socket.io-client';
+import { createContext, useContext } from 'react'
 
-export const WebSocketContext = createContext(null);
+export const WebSocketContext = createContext(null)
 
 export const useWebSocket = () => {
-  const context = useContext(WebSocketContext);
+  const context = useContext(WebSocketContext)
   if (!context) {
-    throw new Error('useWebSocket must be used within WebSocketProvider');
+    throw new Error('useWebSocket must be used within WebSocketProvider')
   }
-  return context;
-};
+  return context
+}

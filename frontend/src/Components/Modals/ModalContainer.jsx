@@ -1,18 +1,18 @@
-import Modal from 'react-bootstrap/Modal';
-import BodyCreateChannel from './BodyCreateChannel';
-import BodyDeletechannel from './BodyDeleteChannel';
-import BodyRenameChannel from './BodyRenameChannel';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useTranslation } from 'react-i18next';
+import Modal from 'react-bootstrap/Modal'
+import BodyCreateChannel from './BodyCreateChannel'
+import BodyDeletechannel from './BodyDeleteChannel'
+import BodyRenameChannel from './BodyRenameChannel'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useTranslation } from 'react-i18next'
 
-const ModalContainer = ({show, setShow, action, selectedChannel, listNameChannels, setCurrentChannel}) => {
+const ModalContainer = ({ show, setShow, action, selectedChannel, listNameChannels, setCurrentChannel }) => {
 
   const { t } = useTranslation()
 
   const modalTitle = {
-    'add': t('modals.addChannel'),
-    'remove': t('modals.removeChannel'),
-    'edit': t('modals.editChannel')
+    add: t('modals.addChannel'),
+    remove: t('modals.removeChannel'),
+    edit: t('modals.editChannel'),
   }
 
   const modalBody = () => {
@@ -27,7 +27,7 @@ const ModalContainer = ({show, setShow, action, selectedChannel, listNameChannel
         )
       case('remove'):
         return (
-          <BodyDeletechannel 
+          <BodyDeletechannel
             setShow={setShow}
             selectedChannel={selectedChannel}
           />
@@ -55,7 +55,7 @@ const ModalContainer = ({show, setShow, action, selectedChannel, listNameChannel
       <Modal.Body>
         {modalBody()}
       </Modal.Body>
-      
+
     </Modal>
   )
 }

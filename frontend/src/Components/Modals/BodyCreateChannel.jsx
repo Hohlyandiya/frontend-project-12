@@ -1,7 +1,7 @@
-import { useState, useContext, useRef, useEffect } from 'react'
+import { useState, /* useContext, */ useRef, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import Button from 'react-bootstrap/esm/Button'
-import * as yup from 'yup'
+// import * as yup from 'yup'
 import cn from 'classnames'
 import addNewChannel from '../../api/addNewChannel'
 import AuthContext from '../../context/index'
@@ -9,12 +9,12 @@ import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import schemaNameChannel from  '../../schems/schemaNameChannel'
 
-const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
+const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => {
 
   const { t } = useTranslation()
 
   const fieldChannelName = useRef()
-  const { user } = useContext(AuthContext)
+  // const { user } = useContext(AuthContext)
   const [isNotValidChannel, setIsNotValidChannel] = useState(false)
   const [errors, setErrors] = useState('')
 
@@ -43,14 +43,15 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
       await addNewChannel(newChannel/* , user.token */, setCurrentChannel)
       handleClose()
       toast.success(t('toastContainer.channelCreate'))
-    } else {
+    }
+    else {
       setIsNotValidChannel(!isValid)
     }
   }
 
   return (
-    <Formik       
-      initialValues={{ name: "" }}
+    <Formik
+      initialValues={{ name: '' }}
       onSubmit={(newChannel) => {
         checkValidNewChannel(newChannel)
       }}
@@ -59,15 +60,15 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
         <Form className="">
           <div className="form-floating mb-3">
             <Field
-            innerRef={fieldChannelName}
-            type="text"
-            className={cn("mb-2 form-control", {
-              "is-invalid": isNotValidChannel
-            })}
-            placeholder={t('modals.nameChannel')}
-            required=""
-            name="name"
-            id="name"
+              innerRef={fieldChannelName}
+              type="text"
+              className={cn('mb-2 form-control', {
+                'is-invalid': isNotValidChannel,
+              })}
+              placeholder={t('modals.nameChannel')}
+              required=""
+              name="name"
+              id="name"
             />
             <label htmlFor="name" className="form-label" >{t('modals.nameChannel')}</label>
           </div>
@@ -76,10 +77,10 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
             <Button variant="secondary" className="me-2" onClick={handleClose}>
               {t('modals.buttonClose')}
             </Button>
-            <Button 
+            <Button
               type="submit"
               variant="primary"
-              onKeyDown={(newChannel) => checkValidNewChannel(newChannel)}
+              onKeyDown={newChannel => checkValidNewChannel(newChannel)}
             >
               {t('modals.buttonSend')}
             </Button>
@@ -90,4 +91,4 @@ const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
   )
 }
 
-export default BodyCreateChannel;
+export default BodyCreateChannel

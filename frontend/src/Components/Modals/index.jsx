@@ -1,7 +1,7 @@
-import ModalCreateChannel from "./ModalCreateChannel"
+import ModalCreateChannel from './ModalCreateChannel'
 
 const modals = {
-  addChannel: ModalCreateChannel
+  addChannel: ModalCreateChannel,
 }
 
 export default modals
