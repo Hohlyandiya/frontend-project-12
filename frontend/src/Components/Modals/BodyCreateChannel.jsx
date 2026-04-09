@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import schemaNameChannel from  '../../schems/schemaNameChannel'
 
-const BodyCreateChannel = ({setShow, listNameChannels}) => {
+const BodyCreateChannel = ({setShow, listNameChannels, setCurrentChannel}) => {
 
   const { t } = useTranslation()
 
@@ -40,7 +40,7 @@ const BodyCreateChannel = ({setShow, listNameChannels}) => {
 
     if (isValid) {
       setIsNotValidChannel(isValid)
-      await addNewChannel(newChannel/* , user.token */)
+      await addNewChannel(newChannel/* , user.token */, setCurrentChannel)
       handleClose()
       toast.success(t('toastContainer.channelCreate'))
     } else {

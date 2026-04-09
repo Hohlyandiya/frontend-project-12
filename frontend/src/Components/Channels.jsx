@@ -53,7 +53,7 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
   
     socket.on('newChannel', (payload) => {
       dispatch(addChannel(payload))
-      setCurrentChannel(payload)
+      //setCurrentChannel(payload)
     });
 
     socket.on('removeChannel', (payload) => {
@@ -113,6 +113,7 @@ const Channels = ({ currentChannel, setCurrentChannel}) => {
         action={action}
         selectedChannel={selectedChannel}
         listNameChannels={listNameChannels}
+        setCurrentChannel={setCurrentChannel}
       />
     </div>
   )
