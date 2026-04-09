@@ -57,17 +57,20 @@ const BodyCreateChannel = ({setShow, listNameChannels}) => {
     >
       {() => (
         <Form className="">
-          <Field
+          <div className="form-floating mb-3">
+            <Field
             innerRef={fieldChannelName}
             type="text"
-            name="name"
             className={cn("mb-2 form-control", {
               "is-invalid": isNotValidChannel
             })}
-            autoComplete="name"
+            placeholder={t('modals.nameChannel')}
             required=""
+            name="name"
             id="name"
-          />
+            />
+            <label htmlFor="name" className="form-label" >{t('modals.nameChannel')}</label>
+          </div>
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
           <div className="d-flex justify-content-end">
             <Button variant="secondary" className="me-2" onClick={handleClose}>

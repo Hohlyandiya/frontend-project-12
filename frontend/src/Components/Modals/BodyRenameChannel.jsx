@@ -58,7 +58,8 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
     >
       {() => (
         <Form className="">
-          <Field
+          <div className="form-floating mb-3">
+            <Field
             innerRef={fieldChangeName}
             type="text"
             name="name"
@@ -69,6 +70,8 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
             required=""
             id="name"
           />
+          <label htmlFor="name" className="form-label" >{t('modals.nameChannel')}</label>
+          </div>
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
           <div className="d-flex justify-content-end">
             <Button variant="secondary" className="me-2" onClick={handleClose}>
