@@ -16,7 +16,9 @@ const ModalContainer = ({ show, setShow, action, selectedChannel, listNameChanne
   }
 
   const modalBody = () => {
+
     switch (action) {
+
       case ('add'):
         return (
           <BodyCreateChannel

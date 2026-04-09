@@ -1,7 +1,7 @@
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import MainPage from './pages/MainPage.jsx'

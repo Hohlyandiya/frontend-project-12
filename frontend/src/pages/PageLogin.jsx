@@ -5,6 +5,7 @@ import NavBar from '../Components/UI/NavBar'
 import { useTranslation } from 'react-i18next'
 
 const RegistrationForm = () => {
+
   const { t } = useTranslation()
   const navigate = useNavigate()
   return (

@@ -23,45 +23,56 @@ const Channels = ({ currentChannel, setCurrentChannel }) => {
   const listNameChannels = listChannels.map(channel => channel.name)
 
   useEffect(() => {
+
     if (channels.length !== listChannels.length) {
+
       setChannels(listChannels)
     }
   }, [listChannels])
 
   useEffect(() => {
+
     const newNameChannels = listChannels.map(channel => channel.name)
     const oldNameChannels = channels.map(channel => channel.name)
     newNameChannels.forEach((name) => {
+
       if (!oldNameChannels.includes(name)) {
+
         setChannels(listChannels)
       }
     })
   }, [listChannels])
 
   useEffect(() => {
+
     setCurrentChannel(defaultChannel)
   }, [defaultChannel])
 
   useEffect(() => {
+
     if (!currentChannel) {
+
       setCurrentChannel(defaultChannel)
     }
   }, [channels, currentChannel])
 
   useEffect(() => {
+
     const socket = io()
 
     socket.on('newChannel', (payload) => {
+
       dispatch(addChannel(payload))
-      //setCurrentChannel(payload)
     })
 
     socket.on('removeChannel', (payload) => {
+
       setCurrentChannel(null)
       dispatch(deleteChannel(payload))
     })
 
     socket.on('renameChannel', (payload) => {
+
       const { id, name } = payload
       const changes = { name }
       const changeData = { id, changes }
@@ -69,16 +80,17 @@ const Channels = ({ currentChannel, setCurrentChannel }) => {
     })
 
     return () => {
+
       socket.disconnect()
     }
   }, [])
 
   const addNewChannel = () => {
+
     setShow(true)
     setAction('add')
   }
 
-  //console.log(`Компонент Channels отрисован в ${new Date().toLocaleTimeString()}`)
   return (
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
       <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
@@ -93,6 +105,7 @@ const Channels = ({ currentChannel, setCurrentChannel }) => {
       </div>
       <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
         {channels.map((channel) => {
+
           return (
             <Channel
               channel={channel}

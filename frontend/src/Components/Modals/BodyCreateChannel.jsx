@@ -19,6 +19,7 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
   const [errors, setErrors] = useState('')
 
   useEffect(() => {
+
     fieldChannelName.current.focus()
   }, [fieldChannelName])
 
@@ -34,17 +35,20 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
   const handleClose = () => setShow(false)
 
   const checkValidNewChannel = async (newChannel) => {
+
     const isValid = schema.isValidSync(newChannel)
     const listErrors = await schema.validate(newChannel).catch(err => err.errors)
     setErrors(listErrors)
 
     if (isValid) {
+
       setIsNotValidChannel(isValid)
       await addNewChannel(newChannel/* , user.token */, setCurrentChannel)
       handleClose()
       toast.success(t('toastContainer.channelCreate'))
     }
     else {
+
       setIsNotValidChannel(!isValid)
     }
   }
@@ -53,6 +57,7 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
     <Formik
       initialValues={{ name: '' }}
       onSubmit={(newChannel) => {
+
         checkValidNewChannel(newChannel)
       }}
     >

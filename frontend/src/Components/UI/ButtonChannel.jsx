@@ -9,6 +9,7 @@ const ButtonChannel = ({ channel, currentChannel, setCurrentChannel }) => {
   })
 
   const channelSelectionHandler = () => {
+
     setCurrentChannel(channel)
   }
 

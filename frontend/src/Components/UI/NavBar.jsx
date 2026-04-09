@@ -13,6 +13,7 @@ const NavBar = () => {
   const navigate = useNavigate()
 
   const logOut = () => {
+
     localStorage.clear()
     setUser(null)
     navigate('/login')

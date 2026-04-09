@@ -13,12 +13,14 @@ const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction,
   })
 
   const removeChannel = () => {
+
     setShow(true)
     setAction('remove')
     setSelectedChannel(channel)
   }
 
   const editChannel = () => {
+
     setShow(true)
     setAction('edit')
     setSelectedChannel(channel)

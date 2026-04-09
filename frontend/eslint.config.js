@@ -40,6 +40,14 @@ export default defineConfig([
       '@stylistic/quote-props': ['error', 'as-needed', { unnecessary: true }],
       '@stylistic/indent': ['error', 2],
       '@stylistic/eol-last': ['error', 'always'],
+      '@stylistic/comma-dangle': ['error', {
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+      }],
+      '@stylistic/multiline-ternary': ['error', 'always-multiline'],
+      '@stylistic/padded-blocks': ['error', 'start'],
+      '@stylistic/spaced-comment': ['error', 'always'],
     },
-  },
+  }
 ])

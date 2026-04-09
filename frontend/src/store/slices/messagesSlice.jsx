@@ -10,19 +10,25 @@ const messagesSlice = createSlice({
   initialState,
   reducers: {
     addMessages(state, { payload }) {
+
       messagesAdapter.setMany(state, payload)
     },
     addMessage(state, { payload }) {
+
       messagesAdapter.addOne(state, payload)
     },
   },
   extraReducers: (builder) => {
+
     builder
       .addCase(deleteChannel, (state, action) => {
+
         const { id } = action.payload
         const allEntites = Object.values(state.entities)
         const deletedMessages = allEntites.filter((message) => {
+
           if (message.channelId === id) {
+
             return message.id
           }
         })

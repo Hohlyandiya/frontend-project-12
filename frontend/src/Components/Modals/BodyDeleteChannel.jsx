@@ -1,21 +1,23 @@
-//import { useContext } from 'react'
+// import { useContext } from 'react'
 import Button from 'react-bootstrap/esm/Button'
 import deleteChannel from '../../api/deleteChannel'
-//import AuthContext from '../../context/index'
+// import AuthContext from '../../context/index'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 
 const BodyDeletechannel = ({ setShow, selectedChannel }) => {
 
-  //const { user } = useContext(AuthContext)
+  // const { user } = useContext(AuthContext)
   const { t } = useTranslation()
 
   const handleClose = () => {
+
     setShow(false)
   }
 
   const removeChannel = async () => {
+
     await deleteChannel(/* user.token, */ selectedChannel.id)
     setShow(false)
     toast.success(t('toastContainer.channelDelete'))
