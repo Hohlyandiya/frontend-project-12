@@ -2,7 +2,6 @@ import * as yup from 'yup'
 // import { useTranslation } from 'react-i18next'
 
 const schemaSignup = (t) => {
-
   // const { t } = useTranslation()
 
   return yup.object().shape({

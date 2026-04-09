@@ -9,7 +9,6 @@ import { Provider as RollBarProvider, ErrorBoundary } from '@rollbar/react'
 import rollbarConfig from './rollbar/rollbarConfig.jsx'
 
 const initialization = () => {
-
   const i18n = i18next.createInstance()
 
   i18n

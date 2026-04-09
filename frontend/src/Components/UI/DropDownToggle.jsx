@@ -5,7 +5,6 @@ import cn from 'classnames'
 import { useTranslation } from 'react-i18next'
 
 const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction, setShow, setSelectedChannel }) => {
-
   const { t } = useTranslation()
 
   const btnClass = cn('', {
@@ -13,14 +12,12 @@ const DropDownToggle = ({ channel, currentChannel, setCurrentChannel, setAction,
   })
 
   const removeChannel = () => {
-
     setShow(true)
     setAction('remove')
     setSelectedChannel(channel)
   }
 
   const editChannel = () => {
-
     setShow(true)
     setAction('edit')
     setSelectedChannel(channel)

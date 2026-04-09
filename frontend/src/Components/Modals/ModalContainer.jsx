@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useTranslation } from 'react-i18next'
 
 const ModalContainer = ({ show, setShow, action, selectedChannel, listNameChannels, setCurrentChannel }) => {
-
   const { t } = useTranslation()
 
   const modalTitle = {
@@ -16,9 +15,7 @@ const ModalContainer = ({ show, setShow, action, selectedChannel, listNameChanne
   }
 
   const modalBody = () => {
-
     switch (action) {
-
       case ('add'):
         return (
           <BodyCreateChannel

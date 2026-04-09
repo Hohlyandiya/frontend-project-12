@@ -46,7 +46,7 @@ export default defineConfig([
         exports: 'always-multiline',
       }],
       '@stylistic/multiline-ternary': ['error', 'always-multiline'],
-      '@stylistic/padded-blocks': ['error', 'start'],
+      '@stylistic/padded-blocks': ['error', 'never'],
       '@stylistic/spaced-comment': ['error', 'always'],
     },
   }

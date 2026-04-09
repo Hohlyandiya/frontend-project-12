@@ -6,14 +6,12 @@ import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
 
 const NavBar = () => {
-
   const { t } = useTranslation()
 
   const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const logOut = () => {
-
     localStorage.clear()
     setUser(null)
     navigate('/login')

@@ -4,7 +4,6 @@ import NavBar from '../Components/UI/NavBar'
 import { Link } from 'react-router-dom'
 
 const NotFound = () => {
-
   const { t } = useTranslation()
 
   return (

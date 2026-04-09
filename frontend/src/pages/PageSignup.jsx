@@ -12,7 +12,6 @@ import { toast } from 'react-toastify'
 import schemaSignup from '../schems/schemaSingup'
 
 const PageSignup = () => {
-
   const { t } = useTranslation()
 
   const navigate = useNavigate()
@@ -56,9 +55,7 @@ const PageSignup = () => {
   } */
 
   const checkIsUserExists = async (user) => {
-
     if (navigator.onLine) {
-
       const { username, password } = user
       const newUser = {
         username,
@@ -66,17 +63,14 @@ const PageSignup = () => {
       }
       const result = await createNewUser(newUser)
       if (result) {
-
         setIsUserExists(false)
         navigate('/')
       }
       else {
-
         setIsUserExists(true)
       }
     }
     else {
-
       toast.error(t('toastContainer.errNetwork'))
     }
   }
@@ -97,7 +91,6 @@ const PageSignup = () => {
                     initialValues={{ username: '', password: '', confirmPassword: '' }}
                     validationSchema={schema}
                     onSubmit={(newUser) => {
-
                       checkIsUserExists(newUser)
                       /* if (navigator.onLine) {
                         checkIsUserExists(newUser)
@@ -110,7 +103,6 @@ const PageSignup = () => {
                       <Form className="w-50">
                         <h1 className="text-center mb-4">{t('pageSignup.registration')}</h1>
                         {Object.keys(values).map((fieldValue) => {
-
                           const labelBody = {
                             username: t('forms.username'),
                             password: t('forms.password'),

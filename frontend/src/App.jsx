@@ -11,7 +11,6 @@ import PageSignup from './pages/PageSignup.jsx'
 import { ToastContainer } from 'react-toastify'
 
 const App = () => {
-
   return (
     <>
       <BrowserRouter>

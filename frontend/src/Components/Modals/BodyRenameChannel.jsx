@@ -10,7 +10,6 @@ import { toast } from 'react-toastify'
 import schemaNameChannel from '../../schems/schemaNameChannel'
 
 const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
-
   const fieldChangeName = useRef()
   // const { user } = useContext(AuthContext)
   const [isNotValidChannel, setIsNotValidChannel] = useState(false)
@@ -18,7 +17,6 @@ const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
   const { t } = useTranslation()
 
   useEffect(() => {
-
     fieldChangeName.current.focus()
   }, [fieldChangeName])
 
@@ -36,17 +34,14 @@ const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
   const handleClose = () => setShow(false)
 
   const checkValidNewChannel = async (newNameChannel) => {
-
     const isValid = schema.isValidSync(newNameChannel)
     const listErrors = await schema.validate(newNameChannel).catch(err => err.errors)
     setErrors(listErrors)
 
     if (!isValid) {
-
       setIsNotValidChannel(!isValid)
     }
     else {
-
       setIsNotValidChannel(isValid)
       await renameChannel(newNameChannel, selectedChannel/* , user.token */)
       handleClose()
@@ -57,7 +52,6 @@ const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
     <Formik
       initialValues={{ name: '' }}
       onSubmit={(newNameChannel) => {
-
         checkValidNewChannel(newNameChannel)
         toast.success(t('toastContainer.channelRename'))
       }}
@@ -87,7 +81,6 @@ const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
               type="submit"
               variant="primary"
               onKeyDown={(newNameChannel) => {
-
                 checkValidNewChannel(newNameChannel)
               }}
             >

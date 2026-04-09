@@ -9,7 +9,6 @@ import ModalContainer from '../Components/Modals/ModalContainer'
 import { useTranslation } from 'react-i18next'
 
 const Channels = ({ currentChannel, setCurrentChannel }) => {
-
   const listChannels = Object.values(useSelector(state => selectors.selectEntities(state)))
 
   const [channels, setChannels] = useState([])
@@ -23,56 +22,44 @@ const Channels = ({ currentChannel, setCurrentChannel }) => {
   const listNameChannels = listChannels.map(channel => channel.name)
 
   useEffect(() => {
-
     if (channels.length !== listChannels.length) {
-
       setChannels(listChannels)
     }
   }, [listChannels])
 
   useEffect(() => {
-
     const newNameChannels = listChannels.map(channel => channel.name)
     const oldNameChannels = channels.map(channel => channel.name)
     newNameChannels.forEach((name) => {
-
       if (!oldNameChannels.includes(name)) {
-
         setChannels(listChannels)
       }
     })
   }, [listChannels])
 
   useEffect(() => {
-
     setCurrentChannel(defaultChannel)
   }, [defaultChannel])
 
   useEffect(() => {
-
     if (!currentChannel) {
-
       setCurrentChannel(defaultChannel)
     }
   }, [channels, currentChannel])
 
   useEffect(() => {
-
     const socket = io()
 
     socket.on('newChannel', (payload) => {
-
       dispatch(addChannel(payload))
     })
 
     socket.on('removeChannel', (payload) => {
-
       setCurrentChannel(null)
       dispatch(deleteChannel(payload))
     })
 
     socket.on('renameChannel', (payload) => {
-
       const { id, name } = payload
       const changes = { name }
       const changeData = { id, changes }
@@ -80,13 +67,11 @@ const Channels = ({ currentChannel, setCurrentChannel }) => {
     })
 
     return () => {
-
       socket.disconnect()
     }
   }, [])
 
   const addNewChannel = () => {
-
     setShow(true)
     setAction('add')
   }
@@ -105,7 +90,6 @@ const Channels = ({ currentChannel, setCurrentChannel }) => {
       </div>
       <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
         {channels.map((channel) => {
-
           return (
             <Channel
               channel={channel}

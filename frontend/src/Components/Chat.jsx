@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next'
 import filter from 'leo-profanity'
 
 const Chat = ({ currentChannel }) => {
-
   const listMessages = Object.values(useSelector(state => selectors.selectEntities(state), shallowEqual))
 
   const { user } = useContext(AuthContext)
@@ -24,18 +23,14 @@ const Chat = ({ currentChannel }) => {
   const { t } = useTranslation()
 
   useEffect(() => {
-
     const totalMessagesChannel = listMessages.filter(message => message.channelId === currentChannel?.id).length
     setTotalMessages(totalMessagesChannel)
   }, [listMessages])
 
   useEffect(() => {
-
     const handleOnline = () => {
-
       setIsOnline(true)
       if (pendingMessage) {
-
         postNewMessage(pendingMessage, currentChannel.id, user.username/* , user.token */)
         setIsFieldDisabled(false)
         fieldMessage.current.value = ''
@@ -43,7 +38,6 @@ const Chat = ({ currentChannel }) => {
       }
     }
     const handleOffline = () => {
-
       setIsOnline(false)
     }
 
@@ -51,39 +45,32 @@ const Chat = ({ currentChannel }) => {
     window.addEventListener('offline', handleOffline)
 
     return () => {
-
       window.removeEventListener('online', handleOnline)
       window.removeEventListener('offline', handleOffline)
     }
   }, [pendingMessage])
 
   useEffect(() => {
-
     const socket = io()
 
     socket.on('newMessage', (payload) => {
-
       dispatch(addMessage(payload))
     })
 
     return () => {
-
       socket.disconnect()
     }
   }, [])
 
   const sendMessage = async (e) => {
-
     e.preventDefault()
     setIsFieldDisabled(true)
     postNewMessage(fieldMessage.current.value, currentChannel.id, user.username/* , user.token */)
     if (isOnline) {
-
       fieldMessage.current.value = ''
       setIsFieldDisabled(false)
     }
     else {
-
       setPendingMessage(fieldMessage.current.value)
     }
   }

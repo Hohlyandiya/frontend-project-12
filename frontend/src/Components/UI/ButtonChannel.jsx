@@ -3,13 +3,11 @@ import Button from 'react-bootstrap/Button'
 import filter from 'leo-profanity'
 
 const ButtonChannel = ({ channel, currentChannel, setCurrentChannel }) => {
-
   const btnClass = cn('', {
     secondary: currentChannel?.id === channel.id ? true : false,
   })
 
   const channelSelectionHandler = () => {
-
     setCurrentChannel(channel)
   }
 

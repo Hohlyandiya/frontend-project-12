@@ -12,7 +12,6 @@ import filter from 'leo-profanity'
 import { initApi } from '../api/apiInstance'
 
 const MainPage = () => {
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const token = localStorage.getItem('token')
@@ -21,9 +20,7 @@ const MainPage = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-
     if (Object.hasOwn(localStorage, 'token')) {
-
       initApi(token)
       loadingChannels(/* token, */ dispatch, t)
       getMessages(/* token, */ dispatch, t)
@@ -33,7 +30,6 @@ const MainPage = () => {
       })
     }
     else {
-
       navigate('/login')
     }
   }, [])
