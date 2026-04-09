@@ -1,9 +1,9 @@
 import * as yup from 'yup'
-import { useTranslation } from 'react-i18next'
+//import { useTranslation } from 'react-i18next'
 
-const schemaSignup = () => {
+const schemaSignup = (t) => {
 
-  const { t } = useTranslation()
+  //const { t } = useTranslation()
 
   return yup.object().shape({
   username: yup.string()

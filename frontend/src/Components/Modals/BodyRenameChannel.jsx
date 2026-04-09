@@ -1,17 +1,18 @@
-import { useState, useContext, useRef, useEffect } from 'react'
+import { useState, /* useContext, */ useRef, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import Button from 'react-bootstrap/esm/Button'
 import * as yup from 'yup'
 import cn from 'classnames'
 import renameChannel from '../../api/renameChannel'
-import AuthContext from '../../context/index'
+//import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
+import schemaNameChannel from '../../schems/schemaNameChannel'
 
 const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
 
   const fieldChangeName = useRef()
-  const { user } = useContext(AuthContext)
+  //const { user } = useContext(AuthContext)
   const [isNotValidChannel, setIsNotValidChannel] = useState(false)
   const [errors, setErrors] = useState('')
   const { t } = useTranslation()
@@ -20,14 +21,16 @@ const BodyRenameChannel = ({setShow, selectedChannel, listNameChannels}) => {
     fieldChangeName.current.focus()
   }, [fieldChangeName])
 
-  const schema = yup.object().shape({
+  const schema = schemaNameChannel(listNameChannels)
+
+/*   const schema = yup.object().shape({
     name: yup.string()
       .trim()
       .min(3, t('modals.minAndMaxChars'))
       .max(20, t('modals.minAndMaxChars'))
       .notOneOf(listNameChannels, t('modals.uniqueNameChannel'))
       .required(),
-  });
+  }); */
 
   const handleClose = () => setShow(false)
 

@@ -3,7 +3,7 @@ import NavBar from "../Components/UI/NavBar"
 import img from "../assets/signup.jpg"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import { Button } from "react-bootstrap"
-import * as yup from 'yup'
+//import * as yup from 'yup'
 import createNewUser from "../api/createNewUser"
 import { useNavigate } from "react-router-dom"
 import cn from 'classnames'
@@ -19,7 +19,7 @@ const PageSignup = () => {
 
   const [isUserExists, setIsUserExists] = useState(false)
 
-  const schema = schemaSignup
+  const schema = schemaSignup(t)
 
 /*   const schema = yup.object().shape({
     username: yup.string()
