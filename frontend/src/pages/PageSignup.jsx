@@ -85,7 +85,7 @@ const PageSignup = () => {
               <div className="card shadow-sm">
                 <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
                   <div>
-                    <img src={img} className="rounded-circle" alt="Регистрация"/>
+                    <img src={img} className="rounded-circle" alt="Регистрация" />
                   </div>
                   <Formik
                     initialValues={{ username: '', password: '', confirmPassword: '' }}
@@ -112,7 +112,7 @@ const PageSignup = () => {
                           const lastElement = listValues[listValues.length - 1]
                           const userExit = fieldValue === lastElement ? 'Такой пользователь уже существует' : ''
                           return (
-                            <div 
+                            <div
                               key={fieldValue}
                               className={cn('form-floating', {
                                 'mb-3': fieldValue !== lastElement ? true : false,
@@ -123,7 +123,7 @@ const PageSignup = () => {
                                 type={'username' === fieldValue ? 'text' : 'password'}
                                 name={fieldValue}
                                 className={cn('form-control', {
-                                  'is-invalid': touched[fieldValue] && errors[fieldValue] || isUserExists ? true : false,
+                                  'is-invalid': (touched[fieldValue] && errors[fieldValue]) || isUserExists ? true : false,
                                 })}
                                 autoComplete={cn('', {
                                   'username': fieldValue === 'username',
@@ -134,8 +134,8 @@ const PageSignup = () => {
                                 placeholder={labelBody[fieldValue]}
                               />
                               <label className="form-label" htmlFor={fieldValue}>{labelBody[fieldValue]}</label>
-                              <ErrorMessage name={fieldValue}>{message => <div placement="right" className="invalid-tooltip">{message}</div>}</ErrorMessage>
-                              {isUserExists ? <div placement="right" className="invalid-tooltip">{userExit}</div> : null}
+                              <ErrorMessage name={fieldValue}>{message => <div /* placement="right" */ className="invalid-tooltip">{message}</div>}</ErrorMessage>
+                              {isUserExists ? <div /* placement="right" */ className="invalid-tooltip">{userExit}</div> : null}
                             </div>
                           )
                         })}

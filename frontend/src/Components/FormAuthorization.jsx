@@ -20,7 +20,7 @@ const FormAuthorization = ({ navigate }) => {
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
-      onSubmit={() => {
+      onSubmit={(username, password) => {
         checkOnline(username.value, password.value)
         /* if (navigator.onLine) {
           await handlerLogin(username.value, password.value, setStateField, navigate)

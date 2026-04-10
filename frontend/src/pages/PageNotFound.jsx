@@ -14,7 +14,7 @@ const NotFound = () => {
           <img alt="Страница не найдена" className="img-fluid h-25" src={img} />
           <h1 className="h4 text-muted">{t('pageNotFound.notFound')}</h1>
           <p className="text-muted">
-            {t('pageNotFound.transition')} 
+            {t('pageNotFound.transition')}
             <Link to="/">{t('pageNotFound.linkMainPage')}</Link>
           </p>
         </div>

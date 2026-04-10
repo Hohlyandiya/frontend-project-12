@@ -24,7 +24,7 @@ const RegistrationForm = () => {
                 <div className="card-footer p-4">
                   <div className="text-center">
                     <span>
-                      {t('pageLogin.noAccount')} 
+                      {t('pageLogin.noAccount')}
                     </span>
                     <Link to="/signup">{t('pageLogin.linkSingup')}</Link>
                   </div>
