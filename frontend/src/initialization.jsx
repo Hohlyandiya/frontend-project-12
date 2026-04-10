@@ -18,13 +18,12 @@ const initialization = () => {
       fallbackLng: 'ru',
     })
 
-
   return (
     <RollBarProvider config={rollbarConfig}>
       <ErrorBoundary>
-        <I18nextProvider i18n={ i18n }>
+        <I18nextProvider i18n={i18n}>
           <AuthProvider>
-            <Provider store={ store }>
+            <Provider store={store}>
               <App />
             </Provider>
           </AuthProvider>

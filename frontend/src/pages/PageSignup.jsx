@@ -78,7 +78,7 @@ const PageSignup = () => {
   return (
     <>
       <div className="d-flex flex-column h-100">
-        <NavBar/>
+        <NavBar />
         <div className="container-fluid h-100">
           <div className="row justify-content-center align-content-center h-100">
             <div className="col-12 col-md-8 col-xxl-6">
@@ -112,10 +112,13 @@ const PageSignup = () => {
                           const lastElement = listValues[listValues.length - 1]
                           const userExit = fieldValue === lastElement ? 'Такой пользователь уже существует' : ''
                           return (
-                            <div key={fieldValue} className={cn('form-floating', {
-                              'mb-3': fieldValue !== lastElement ? true : false,
-                              'mb-4': fieldValue === lastElement ? true : false,
-                            })}>
+                            <div 
+                              key={fieldValue}
+                              className={cn('form-floating', {
+                                'mb-3': fieldValue !== lastElement ? true : false,
+                                'mb-4': fieldValue === lastElement ? true : false,
+                              })}
+                            >
                               <Field
                                 type={'username' === fieldValue ? 'text' : 'password'}
                                 name={fieldValue}
@@ -123,7 +126,7 @@ const PageSignup = () => {
                                   'is-invalid': touched[fieldValue] && errors[fieldValue] || isUserExists ? true : false,
                                 })}
                                 autoComplete={cn('', {
-                                  username: fieldValue === 'username',
+                                  'username': fieldValue === 'username',
                                   'new-password': fieldValue !== 'username',
                                 })}
                                 required=""

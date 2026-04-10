@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <div className="container">
-        <Link className="navbar-brand" to='/'>{t('navBar.link')}</Link>
+        <Link className="navbar-brand" to="/">{t('navBar.link')}</Link>
         {user !== null ? <Button variant="primary" onClick={logOut}>{t('navBar.logOut')}</Button> : null}
       </div>
     </nav>

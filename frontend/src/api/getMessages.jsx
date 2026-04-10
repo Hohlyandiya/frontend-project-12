@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { getApi } from './apiInstance'
 
 const getMessages = (/* token, */ dispatch, translation) => {
-  axios.get('/api/v1/messages', getApi()/* {
+  axios.get('/api/v1/messages', getApi(),/* {
     headers: {
       Authorization: `Bearer ${token}`,
     },
