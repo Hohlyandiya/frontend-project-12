@@ -3,8 +3,7 @@ import ButtonChannel from './UI/ButtonChannel'
 
 const Channel = ({ channel, currentChannel, setCurrentChannel, setAction, setShow, setSelectedChannel }) => {
   return channel.removable
-    ?
-      (
+    ? (
         <li key={channel.id} className="nav-item w-100">
           <DropDownToggle
             channel={channel}
@@ -16,8 +15,7 @@ const Channel = ({ channel, currentChannel, setCurrentChannel, setAction, setSho
           />
         </li>
       )
-    :
-      (
+    : (
         <li key={channel.id} className="nav-item w-100">
           <ButtonChannel
             channel={channel}

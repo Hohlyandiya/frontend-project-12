@@ -70,7 +70,7 @@ const BodyRenameChannel = ({ setShow, selectedChannel, listNameChannels }) => {
               required=""
               id="name"
             />
-            <label htmlFor="name" className="form-label" >{t('modals.nameChannel')}</label>
+            <label htmlFor="name" className="form-label">{t('modals.nameChannel')}</label>
           </div>
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
           <div className="d-flex justify-content-end">

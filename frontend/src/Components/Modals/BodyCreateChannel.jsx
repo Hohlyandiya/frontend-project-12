@@ -4,10 +4,10 @@ import Button from 'react-bootstrap/esm/Button'
 // import * as yup from 'yup'
 import cn from 'classnames'
 import addNewChannel from '../../api/addNewChannel'
-import AuthContext from '../../context/index'
+//import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
-import schemaNameChannel from  '../../schems/schemaNameChannel'
+import schemaNameChannel from '../../schems/schemaNameChannel'
 
 const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => {
   const { t } = useTranslation()
@@ -69,7 +69,7 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
               name="name"
               id="name"
             />
-            <label htmlFor="name" className="form-label" >{t('modals.nameChannel')}</label>
+            <label htmlFor="name" className="form-label">{t('modals.nameChannel')}</label>
           </div>
           {isNotValidChannel ? <div className="invalid-feedback">{errors[0]}</div> : null}
           <div className="d-flex justify-content-end">

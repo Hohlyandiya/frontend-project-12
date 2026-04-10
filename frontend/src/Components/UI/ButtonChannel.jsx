@@ -13,7 +13,8 @@ const ButtonChannel = ({ channel, currentChannel, setCurrentChannel }) => {
 
   return (
     <Button variant={btnClass} className="w-100 rounded-0 text-start" onClick={channelSelectionHandler}>
-      <span className="me-1">#</span>{filter.clean(channel.name)}
+      <span className="me-1">#</span>
+      {filter.clean(channel.name)}
     </Button>
   )
 }

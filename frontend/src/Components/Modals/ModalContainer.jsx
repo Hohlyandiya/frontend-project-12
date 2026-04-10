@@ -24,14 +24,14 @@ const ModalContainer = ({ show, setShow, action, selectedChannel, listNameChanne
             setCurrentChannel={setCurrentChannel}
           />
         )
-      case('remove'):
+      case ('remove'):
         return (
           <BodyDeletechannel
             setShow={setShow}
             selectedChannel={selectedChannel}
           />
         )
-      case('edit'):
+      case ('edit'):
         return (
           <BodyRenameChannel
             setShow={setShow}

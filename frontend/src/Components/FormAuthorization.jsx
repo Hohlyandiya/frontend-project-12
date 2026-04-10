@@ -58,7 +58,7 @@ const FormAuthorization = ({ navigate }) => {
             {tooltip}
             {/* <ErrorMessage name=''>{tooltip}</ErrorMessage> */}
           </div>
-          <Button type='submit' variant='outline-primary' className="w-100 mb-3">{t('pageLogin.login')}</Button>
+          <Button type="submit" variant="outline-primary" className="w-100 mb-3">{t('pageLogin.login')}</Button>
         </Form>
       )}
     </Formik>
