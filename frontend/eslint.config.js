@@ -48,6 +48,21 @@ export default defineConfig([
       '@stylistic/multiline-ternary': ['error', 'always-multiline'],
       '@stylistic/padded-blocks': ['error', 'never'],
       '@stylistic/spaced-comment': ['error', 'always'],
+      '@stylistic/jsx-quotes': ["error", "prefer-single"],
+      '@stylistic/jsx-one-expression-per-line': ['error', 'always'],
+      '@stylistic/jsx-tag-spacing': ['error', { closingSlash: 'never' }],
+      '@stylistic/jsx-wrap-multilines': 'error',
+      '@stylistic/jsx-equals-spacing': ["error", "never"],
+      '@stylistic/jsx-curly-spacing': [2, "always"],
+      '@stylistic/jsx-first-prop-new-line': ['error', 'always'],
+      '@stylistic/jsx-max-props-per-line': 'error',
+      '@stylistic/jsx-closing-bracket-location': 'error',
+      '@stylistic/no-multi-spaces':'error',
+      '@stylistic/keyword-spacing': ["error", { "before": true }],
+      '@stylistic/comma-dangle': ["error", "always"],
+      '@stylistic/arrow-spacing': 'error',
+      '@stylistic/no-multiple-empty-lines': 'error',
+      '@stylistic/no-mixed-operators': 'error'
     },
   }
 ])
