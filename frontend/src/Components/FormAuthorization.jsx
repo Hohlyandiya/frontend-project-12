@@ -22,11 +22,6 @@ const FormAuthorization = ({ navigate }) => {
       initialValues={{ username: '', password: '' }}
       onSubmit={(FieldMeaningvalues) => {
         checkOnline(FieldMeaningvalues.username, FieldMeaningvalues.password)
-        /* if (navigator.onLine) {
-          await handlerLogin(username.value, password.value, setStateField, navigate)
-        } else {
-          toast.error(t('toastContainer.errNetwork'))
-        } */
       }}
     >
       {() => (
@@ -56,7 +51,6 @@ const FormAuthorization = ({ navigate }) => {
             />
             <label className="form-label" htmlFor="password">{t('forms.password')}</label>
             {tooltip}
-            {/* <ErrorMessage name=''>{tooltip}</ErrorMessage> */}
           </div>
           <Button type="submit" variant="outline-primary" className="w-100 mb-3">{t('pageLogin.login')}</Button>
         </Form>

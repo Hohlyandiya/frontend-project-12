@@ -22,8 +22,8 @@ const MainPage = () => {
   useEffect(() => {
     if (Object.hasOwn(localStorage, 'token')) {
       initApi(token)
-      loadingChannels(/* token, */ dispatch, t)
-      getMessages(/* token, */ dispatch, t)
+      loadingChannels(dispatch, t)
+      getMessages(dispatch, t)
       setUser({
         token,
         username,

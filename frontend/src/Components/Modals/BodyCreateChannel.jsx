@@ -1,10 +1,8 @@
-import { useState, /* useContext, */ useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import Button from 'react-bootstrap/esm/Button'
-// import * as yup from 'yup'
 import cn from 'classnames'
 import addNewChannel from '../../api/addNewChannel'
-// import AuthContext from '../../context/index'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import schemaNameChannel from '../../schems/schemaNameChannel'
@@ -13,7 +11,6 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
   const { t } = useTranslation()
 
   const fieldChannelName = useRef()
-  // const { user } = useContext(AuthContext)
   const [isNotValidChannel, setIsNotValidChannel] = useState(false)
   const [errors, setErrors] = useState('')
 
@@ -21,14 +18,7 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
     fieldChannelName.current.focus()
   }, [fieldChannelName])
 
-  const schema = schemaNameChannel(listNameChannels) /* yup.object().shape({
-    name: yup.string()
-      .trim()
-      .min(3, t('modals.minAndMaxChars'))
-      .max(20, t('modals.minAndMaxChars'))
-      .notOneOf(listNameChannels, t('modals.uniqueNameChannel'))
-      .required(),
-  }); */
+  const schema = schemaNameChannel(listNameChannels)
 
   const handleClose = () => setShow(false)
 
@@ -39,7 +29,7 @@ const BodyCreateChannel = ({ setShow, listNameChannels, setCurrentChannel }) => 
 
     if (isValid) {
       setIsNotValidChannel(isValid)
-      await addNewChannel(newChannel/* , user.token */, setCurrentChannel)
+      await addNewChannel(newChannel, setCurrentChannel)
       handleClose()
       toast.success(t('toastContainer.channelCreate'))
     }

@@ -26,6 +26,5 @@ export const getApi = () => {
   const authorization = { headers: {
     Authorization: authorizationValue,
   } }
-  // console.log(authorization)
   return authorization
 }

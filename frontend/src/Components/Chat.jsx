@@ -31,7 +31,7 @@ const Chat = ({ currentChannel }) => {
     const handleOnline = () => {
       setIsOnline(true)
       if (pendingMessage) {
-        postNewMessage(pendingMessage, currentChannel.id, user.username/* , user.token */)
+        postNewMessage(pendingMessage, currentChannel.id, user.username)
         setIsFieldDisabled(false)
         fieldMessage.current.value = ''
         setPendingMessage(null)
@@ -65,7 +65,7 @@ const Chat = ({ currentChannel }) => {
   const sendMessage = async (e) => {
     e.preventDefault()
     setIsFieldDisabled(true)
-    postNewMessage(fieldMessage.current.value, currentChannel.id, user.username/* , user.token */)
+    postNewMessage(fieldMessage.current.value, currentChannel.id, user.username)
     if (isOnline) {
       fieldMessage.current.value = ''
       setIsFieldDisabled(false)
@@ -74,11 +74,6 @@ const Chat = ({ currentChannel }) => {
       setPendingMessage(fieldMessage.current.value)
     }
   }
-
-  /* const TestError = () => {
-    const a = null
-    a.errorFuncTry()
-  } */
 
   const disabledSendButton = () => fieldMessage.current.value.length !== 0 ? setIsSendButtonDisabled(false) : setIsSendButtonDisabled(true)
   return (
