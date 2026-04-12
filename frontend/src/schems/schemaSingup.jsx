@@ -1,7 +1,6 @@
 import * as yup from 'yup'
 
 const schemaSignup = (t) => {
-
   return yup.object().shape({
     username: yup.string()
       .trim()

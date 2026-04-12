@@ -82,7 +82,7 @@ const Channels = ({ currentChannel, setCurrentChannel }) => {
       <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
         <b>{t('mainPage.channels')}</b>
         <button type="button" className="p-0 text-primary btn btn-group-vertical" onClick={addNewChannel}>
-          <IconAdd/>
+          <IconAdd />
           <span className="visually-hidden">{t('mainPage.addChannel')}</span>
         </button>
       </div>
