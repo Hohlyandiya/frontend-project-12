@@ -7,4 +7,4 @@ const IconAdd = () => {
   )
 }
 
-export default Icon
+export default IconAdd
